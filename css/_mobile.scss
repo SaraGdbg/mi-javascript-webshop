@@ -1,0 +1,74 @@
+:root {
+  --darkPetrol: #002627;
+  --maroon: #32050e;
+  --turqouise: #85cccf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+body {
+  background-color: var(--turqouise);
+  color: #fff;
+  font-family: "Inter";
+}
+
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
+  width: 100vw;
+
+  h1 {
+    color: var(--darkPetrol);
+    display: flex;
+    font-family: "Love ya like a sister";
+    font-size: 4rem;
+    margin: 15px 25px 5px 25px;
+  }
+
+  .title {
+    display: flex;
+    font-style: italic;
+  }
+}
+
+.buttonsSubtractAdd {
+  margin-top: 100px;
+  input {
+    width: 60px;
+  }
+}
+
+/* -------------------------------------------------- FORMULÄR ------------------------------------------------- */
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  label {
+    align-items: center;
+    color: var(--maroon);
+    display: flex;
+    font-family: "Love ya like a sister";
+    font-size: 2rem;
+    margin-bottom: 10px;
+    input {
+      border-radius: 8px;
+      display: flex;
+      font-family: "Inter";
+      font-size: 1rem;
+      margin-left: 10px;
+      max-width: 200px;
+    }
+  }
+}

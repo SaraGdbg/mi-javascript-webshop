@@ -1,0 +1,11 @@
+@import "vendor/normalize.scss";
+
+@import "_mobile";
+
+@media screen and (min-width: 1024px) {
+  @import "_tablet";
+}
+
+@media screen and (min-width: 1200px) {
+  @import "_desktop";
+}
