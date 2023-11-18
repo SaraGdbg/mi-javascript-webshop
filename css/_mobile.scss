@@ -2,6 +2,7 @@
   --darkPetrol: #002627;
   --maroon: #32050e;
   --turqouise: #85cccf;
+  --vanilla: #fcf4d9;
 }
 
 * {
@@ -16,30 +17,81 @@ img {
 
 body {
   background-color: var(--turqouise);
-  color: #fff;
+  color: #000;
   font-family: "Inter";
 }
 
+h1,
+h2 {
+  color: var(--darkPetrol);
+  display: flex;
+  font-family: "Love ya like a sister";
+}
+
+/* -------------------------------------------------- HEADER + TITLE ------------------------------------------------- */
+
 header {
   align-items: center;
+  background-color: var(--turqouise);
   display: flex;
-  flex-direction: column;
-  height: 10vh;
-  width: 100vw;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 15vh;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 10px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  .material-symbols-outlined {
+    font-size: 2.2rem;
+  }
 
   h1 {
-    color: var(--darkPetrol);
-    display: flex;
-    font-family: "Love ya like a sister";
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin: 15px 25px 5px 25px;
   }
 
   .title {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slogan {
     display: flex;
     font-style: italic;
   }
 }
+
+/* -------------------------------------------------- PAGE 1 ------------------------------------------------- */
+
+.description {
+  color: #000;
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  margin: 15px 0 15px 0;
+  position: relative;
+  text-align: center;
+  .background-img {
+    width: 100%;
+  }
+  .descriptionText {
+    background-color: rgb(252, 244, 217, 0.8);
+    border-radius: 10px;
+    left: 20px;
+    padding: 15px 15px;
+    position: absolute;
+    width: 45%;
+  }
+}
+
+h2 {
+  font-size: 2.5rem;
+  justify-content: center;
+}
+
+/* -------------------------------------------------- BUTTONS ------------------------------------------------- */
 
 .buttonsSubtractAdd {
   margin-top: 100px;
@@ -48,19 +100,20 @@ header {
   }
 }
 
-/* -------------------------------------------------- FORMULÄR ------------------------------------------------- */
+/* -------------------------------------------------- FORM ------------------------------------------------- */
 
 form {
-  align-items: center;
+  align-items: flex-end;
   display: flex;
   flex-direction: column;
+  padding: 0 20px 0 0;
   width: 100vw;
   label {
     align-items: center;
     color: var(--maroon);
     display: flex;
     font-family: "Love ya like a sister";
-    font-size: 2rem;
+    font-size: 1.3rem;
     margin-bottom: 10px;
     input {
       border-radius: 8px;
@@ -68,7 +121,8 @@ form {
       font-family: "Inter";
       font-size: 1rem;
       margin-left: 10px;
-      max-width: 200px;
+      max-width: 150px;
+      padding: 3px 10px;
     }
   }
 }
