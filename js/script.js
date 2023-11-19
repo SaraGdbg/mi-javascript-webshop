@@ -5,7 +5,7 @@ console.log("this works!");
 
 const teacups = [
   {
-    name: "kristall",
+    name: "Kristall",
     price: 249,
     category: "med öra",
     rating: 3,
@@ -18,7 +18,7 @@ const teacups = [
     },
   },
   {
-    name: "havsbris",
+    name: "Havsbris",
     price: 349,
     category: "med öra",
     rating: 5,
@@ -31,7 +31,7 @@ const teacups = [
     },
   },
   {
-    name: "retro",
+    name: "Retro",
     price: 179,
     category: "med öra",
     rating: 4.5,
@@ -44,7 +44,7 @@ const teacups = [
     },
   },
   {
-    name: "flamma",
+    name: "Flamma",
     price: 179,
     category: "med fat",
     rating: 3,
@@ -57,7 +57,7 @@ const teacups = [
     },
   },
   {
-    name: "surprise",
+    name: "Surprise",
     price: 179,
     category: "med öra",
     rating: 3,
@@ -70,7 +70,7 @@ const teacups = [
     },
   },
   {
-    name: "mjau",
+    name: "Mjau",
     price: 179,
     category: "med öra",
     rating: 5,
@@ -83,7 +83,7 @@ const teacups = [
     },
   },
   {
-    name: "mormor",
+    name: "Mormor",
     price: 195,
     category: "med fat",
     rating: 3,
@@ -96,7 +96,7 @@ const teacups = [
     },
   },
   {
-    name: "sandstrand",
+    name: "Sandstrand",
     price: 349,
     category: "utan öra",
     rating: 4.5,
@@ -109,7 +109,7 @@ const teacups = [
     },
   },
   {
-    name: "glasklar",
+    name: "Glasklar",
     price: 129,
     category: "med öra",
     rating: 4,
@@ -122,7 +122,7 @@ const teacups = [
     },
   },
   {
-    name: "fiskben",
+    name: "Fiskben",
     price: 349,
     category: "med öra",
     rating: 4.5,
@@ -135,7 +135,7 @@ const teacups = [
     },
   },
   {
-    name: "naturlig",
+    name: "Naturlig",
     price: 99,
     category: "utan öra",
     rating: 5,
@@ -148,7 +148,7 @@ const teacups = [
     },
   },
   {
-    name: "hjärtat",
+    name: "Hjärtat",
     price: 179,
     category: "med öra",
     rating: 4,
@@ -161,7 +161,7 @@ const teacups = [
     },
   },
   {
-    name: "stilren",
+    name: "Stilren",
     price: 249,
     category: "med öra",
     rating: 3.5,
@@ -174,7 +174,7 @@ const teacups = [
     },
   },
   {
-    name: "berså",
+    name: "Berså",
     price: 249,
     category: "med fat",
     rating: 4,
@@ -187,7 +187,7 @@ const teacups = [
     },
   },
   {
-    name: "namaste",
+    name: "Namaste",
     price: 299,
     category: "med öra",
     rating: 5,
@@ -200,7 +200,7 @@ const teacups = [
     },
   },
   {
-    name: "kornblå",
+    name: "Kornblå",
     price: 249,
     category: "med fat",
     rating: 4.5,
@@ -214,25 +214,28 @@ const teacups = [
   },
 ];
 
-const teacupsContainer = document.querySelector("#teacup-container");
+const teacupContainer = document.querySelector("#teacup-container");
 
 for (let i = 0; i < teacups.length; i++) {
-  teacupsContainer.innerHTML += `<div id="teacup-${i}">
+  teacupContainer.innerHTML += `<div class="teacups" id="teacup-${i}">
   <h3>${teacups[i].name}</h3>
   <span class="rating">Betyg: ${teacups[i].rating}/5</span>
   <div id="img-conatiner-${i}" class="img-containers">
-    <img src="${teacups[i].img.src}" alt="${teacups[i].img.alt}" id="teacup-img-${i}"/>
+    <img src="${teacups[i].img.src}" alt="${teacups[i].img.alt}" id="teacup-img-${i} width="500" height="500"/>
   </div>
   <span class="price">Pris: ${teacups[i].price} kr</span>
   <div class="buttons">
     <button class="decrease" id="decreaseBtn-${i}">-</button>
     <span class="amount">${teacups[i].amount}</span>
     <button class="increase" id="increaseBtn-${i}">+</button>
-</div>`;
+  </div>`;
 }
+/* Har jag rätt antal </div> ? Ser rätt it i konsollen men här ser det ut att fattas ett? Stängs den översta nivån någonsin? Funkar dock!
+/* Lägg till knapp för att lägga varan i kundkorgen! */
+/* Koppla ihop valt antal med kundkorgen */
 
 /**
- *  PLUS-/MINUSKNAPPAR
+ *  PLUS-/MINUSKNAPPAR TEST
  */
 const minus = document.querySelector("#subtract");
 const plus = document.querySelector("#add");
