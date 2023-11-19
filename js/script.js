@@ -214,10 +214,21 @@ const teacups = [
   },
 ];
 
-const teacupsContainer = document.querySelector("#img-container");
+const teacupsContainer = document.querySelector("#teacup-container");
 
-for (i = 0; i < teacups.length; i++) {
-  teacupsContainer.innerHTML += i; // Det funkar att printa i, alltså funkar loopen. Varför kan jag inte loopa varorna?
+for (let i = 0; i < teacups.length; i++) {
+  teacupsContainer.innerHTML += `<div id="teacup-${i}">
+  <h3>${teacups[i].name}</h3>
+  <span class="rating">Betyg: ${teacups[i].rating}/5</span>
+  <div id="img-conatiner-${i}" class="img-containers">
+    <img src="${teacups[i].img.src}" alt="${teacups[i].img.alt}" id="teacup-img-${i}"/>
+  </div>
+  <span class="price">Pris: ${teacups[i].price} kr</span>
+  <div class="buttons">
+    <button class="decrease" id="decreaseBtn-${i}">-</button>
+    <span class="amount">${teacups[i].amount}</span>
+    <button class="increase" id="increaseBtn-${i}">+</button>
+</div>`;
 }
 
 /**
