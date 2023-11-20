@@ -228,20 +228,18 @@ for (let i = 0; i < teacups.length; i++) {
     <button class="decrease" id="decreaseBtn-${i}">-</button>
     <span class="amount">${teacups[i].amount}</span>
     <button class="increase" id="increaseBtn-${i}">+</button>
-  </div>`;
+  </div>
+  <button id="addToBasket">Lägg till i varukorgen</button>`;
 }
 /* Har jag rätt antal </div> ? Ser rätt it i konsollen men här ser det ut att fattas ett? Stängs den översta nivån någonsin? Funkar dock!
-/* Lägg till knapp för att lägga varan i kundkorgen! */
 /* Koppla ihop valt antal med kundkorgen */
 
 /**
  * SHOPPING BASKET HEADER
  */
-const basketAmount = document.querySelector("#basketAmount");
-
-for (let i = 0; i < teacups.length; i++) {
-  basketAmount.innerHTML = `Summa: ` /* Skriv färdigt här! Summa i varukorgen i headern
-}
+const basketAmount = document.querySelector("#basketSum");
+console.log(basketAmount);
+/* Skriv färdigt här! Summa i varukorgen i headern*/
 
 /**
  *  PLUS-/MINUSBTN TEST
