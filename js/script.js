@@ -1,6 +1,6 @@
 console.log("this works!");
 /**
- *  TEKOPPAR
+ *  TEACUPS
  */
 
 const teacups = [
@@ -180,7 +180,7 @@ const teacups = [
     rating: 4,
     amount: 0,
     img: {
-      src: "assets/imgs/14BERSÅpexels-sena-10240647.jpg/",
+      src: "assets/imgs/14BERSÅpexels-sena-10240647.jpg",
       alt: "Ljusgrön mindre kopp med vitt blommönster på tillhörande fat. I koppen flyter en citronskiva i te.",
       width: 500,
       height: 500,
@@ -235,7 +235,16 @@ for (let i = 0; i < teacups.length; i++) {
 /* Koppla ihop valt antal med kundkorgen */
 
 /**
- *  PLUS-/MINUSKNAPPAR TEST
+ * SHOPPING BASKET HEADER
+ */
+const basketAmount = document.querySelector("#basketAmount");
+
+for (let i = 0; i < teacups.length; i++) {
+  basketAmount.innerHTML = `Summa: ` /* Skriv färdigt här! Summa i varukorgen i headern
+}
+
+/**
+ *  PLUS-/MINUSBTN TEST
  */
 const minus = document.querySelector("#subtract");
 const plus = document.querySelector("#add");

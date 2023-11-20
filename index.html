@@ -24,6 +24,7 @@
         <span class="slogan">- där varje kopp rymmer en stund av glädje!</span>
       </div>
       <span class="material-symbols-outlined">shopping_cart</span>
+      <span id="basketAmount"><!--Totalsumma varukorg--></span>
     </header>
     <main>
       <section class="description">
@@ -38,19 +39,31 @@
           class="background-img"
         />
       </section>
-      <!--------------------------------------- PRODUKTER ------------------------------------------------>
+      <!--------------------------------------- PRODUCTS ------------------------------------------------>
 
       <div class="teacups">
         <h2>Sortiment</h2>
         <div id="teacup-container"><!--Tekopparna här--></div>
       </div>
+
       <!----------------------------------------- TEST --------------------------------------------------->
+
       <div class="buttonsSubtractAdd">
         <button id="subtract">-</button>
         <input type="number" id="currentCount" value="0" />
         <button id="add">+</button>
       </div>
-      <!---------------------------------------- FORMULÄR ------------------------------------------------>
+
+      <!---------------------------------------- BASKET ------------------------------------------------>
+
+      <div id="shoppingBasket">
+        <!--Varukorgen här-->
+        <h2>Varukorg</h2>
+      </div>
+
+      <!----------------------------------------- FORM ------------------------------------------------->
+
+      <h2>Kunduppgifter</h2>
       <form>
         <label>
           Förnamn:
