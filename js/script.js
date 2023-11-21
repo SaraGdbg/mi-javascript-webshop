@@ -214,48 +214,80 @@ const teacups = [
   },
 ];
 
+/**
+ * PRINT TEACUPS TO WEBSHOP
+ * PLUS/MINUS BTNS
+ */
 const teacupContainer = document.querySelector("#teacup-container");
 
-for (let i = 0; i < teacups.length; i++) {
-  teacupContainer.innerHTML += `<div class="teacups" id="teacup-${i}">
-  <h3>${teacups[i].name}</h3>
-  <span class="rating">Betyg: ${teacups[i].rating}/5</span>
-  <div id="img-conatiner-${i}" class="img-containers">
-    <img src="${teacups[i].img.src}" alt="${teacups[i].img.alt}" id="teacup-img-${i} width="500" height="500"/>
-  </div>
-  <span class="price">Pris: ${teacups[i].price} kr</span>
-  <div class="buttons">
-    <button class="decrease" id="decreaseBtn-${i}">-</button>
-    <span class="amount">${teacups[i].amount}</span>
-    <button class="increase" id="increaseBtn-${i}">+</button>
-  </div>
-  <button id="addToBasket">Lägg till i varukorgen</button>`;
+printProducts();
+
+function decreaseAmount(e) {
+  let index = e.target.id.replace("decreaseBtn-", "");
+  index = Number(index);
+  teacups[index].amount -= 1;
+
+  printProducts();
 }
-/* Har jag rätt antal </div> ? Ser rätt it i konsollen men här ser det ut att fattas ett? Stängs den översta nivån någonsin? Funkar dock!
+
+function increaseAmount(e) {
+  let index = e.target.id.replace("increaseBtn-", "");
+  index = Number(index);
+  teacups[index].amount += 1;
+
+  printProducts();
+}
+
+function printProducts() {
+  teacupContainer.innerHTML = "";
+
+  for (let i = 0; i < teacups.length; i++) {
+    teacupContainer.innerHTML += `
+    <div class="teacups" id="teacup-${i}">
+      <h3>${teacups[i].name}</h3>
+      <span class="rating">Betyg: ${teacups[i].rating}/5</span>
+      <div id="img-conatiner-${i}" class="img-containers">
+        <img src="${teacups[i].img.src}" alt="${teacups[i].img.alt}" id="teacup-img-${i} width="500" height="500"/>
+      </div>
+      <span class="price">Pris: ${teacups[i].price} kr</span>
+      <div class="buttons">
+        <button class="decrease" id="decreaseBtn-${i}">-</button>
+        <input type="number" class="chosenAmount" value="${teacups[i].amount}">
+        <button class="increase" id="increaseBtn-${i}">+</button>
+      </div>
+      <button id="addToBasket">Lägg till i varukorgen</button>
+    </div>`;
+  }
+
+  const decreaseButtons = document.querySelectorAll(".decrease");
+  decreaseButtons.forEach((btn) => {
+    btn.addEventListener("click", decreaseAmount);
+  });
+
+  const increaseButtons = document.querySelectorAll(".increase");
+  increaseButtons.forEach((btn) => {
+    btn.addEventListener("click", increaseAmount);
+  });
+}
+
 /* Koppla ihop valt antal med kundkorgen */
 
 /**
  * SHOPPING BASKET HEADER
  */
 const basketAmount = document.querySelector("#basketSum");
+
 console.log(basketAmount);
-/* Skriv färdigt här! Summa i varukorgen i headern*/
+/* Skriv färdigt här! Summa i varukorgen i headern. Eller antal varor? */
 
 /**
- *  PLUS-/MINUSBTN TEST
+ * SHOPPING BASKET
+ *
+ * - välja antal av en vara
+ * - lägga varan i kundkorgen (+visuell feedback)
+ * - varan ska dyka upp i kundkorgen
+ * - om fler än en vara av samma sort, uppdatera antalet
+ * - uppdatera totalsumman
+ * - (uppdatera summa/vara)
+ * - formuläret ska dyka upp när man trycker på beställ
  */
-const minus = document.querySelector("#subtract");
-const plus = document.querySelector("#add");
-const currentCount = document.querySelector("#currentCount");
-
-minus.addEventListener("click", subtraction);
-
-function subtraction() {
-  currentCount.value -= 1;
-}
-
-plus.addEventListener("click", addition);
-
-function addition() {
-  currentCount.value = Number(currentCount.value) + 1;
-}

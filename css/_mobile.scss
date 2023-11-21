@@ -115,6 +115,9 @@ h3 {
     border: 10px solid #fff;
     filter: drop-shadow(2px 2px 5px #000);
     margin: 10px 25px;
+    img {
+      max-width: 500px;
+    }
   }
   .price {
     font-size: 1.8rem;
@@ -138,6 +141,13 @@ h3 {
   input {
     width: 60px;
   }
+}
+
+/* ------------------------------------------------ PLUS/MINUS BTNS ----------------------------------------------- */
+
+.chosenAmount {
+  max-width: 50px;
+  margin: 0 0 10px 0;
 }
 
 /* -------------------------------------------------- FORM ------------------------------------------------- */
