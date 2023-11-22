@@ -252,7 +252,7 @@ function printProducts() {
       <h3>${teacups[i].name}</h3>
       <span class="rating">Betyg: ${teacups[i].rating}/5</span>
       <div id="img-conatiner-${i}" class="img-containers">
-        <img src="${teacups[i].img.src}" alt="${teacups[i].img.alt}" id="teacup-img-${i} width="500" height="500"/>
+        <img src="${teacups[i].img.src}" alt="${teacups[i].img.alt}" id="teacup-img-${i} width="500" height="500" loading = "lazy"/>
       </div>
       <span class="price">Pris: ${teacups[i].price} kr</span>
       <div class="buttons">
@@ -306,14 +306,38 @@ sortTeacups.innerHTML += `
   </div>
 `;
 
+// SORT BY PRICE
+// Väljer prisknappen
 const sortPriceBtn = document.querySelector("#sortPriceBtn");
 
+// Lyssnar efter klick och kör då
 sortPriceBtn.addEventListener("click", sortPrice);
 
-/*function sortPrice() {
-  teacups.sort 
-}*/
-// FUNKAR INTE!
+// Funktion som sorterar efter pris (lågt -> högt)
+function sortPrice() {
+  teacups.sort((teacup1, teacup2) => {
+    return teacup1.price - teacup2.price;
+  });
+
+  printProducts();
+}
+
+// SORT BY RATING
+// Väljer namnknappen
+const sortRatingBtn = document.querySelector("#sortRatingBtn");
+
+// Lyssnar efter klick och kör då
+sortRatingBtn.addEventListener("click", sortRating);
+
+function sortRating() {
+  teacups.sort((teacup1, teacup2) => {
+    return teacup1.rating - teacup2.rating;
+  });
+
+  printProducts();
+}
+
+console.table(teacups);
 
 //Sortera på pris
 // Välj rätt knapp
@@ -325,9 +349,13 @@ sortPriceBtn.addEventListener("click", sortPrice);
  *
  * - välja antal av en vara
  * - lägga varan i kundkorgen (+visuell feedback)
+ *   = evenlistener på köp-knappen -> funktion som kopierar sort + antal + pris till kundkorgen
  * - varan ska dyka upp i kundkorgen
+ *   = kundkorgen är en ny array? .push?
+ *    Skriva ut vad som finns i kundkorgen (video kryyddhyllan, arrays)
  * - om fler än en vara av samma sort, uppdatera antalet
  * - uppdatera totalsumman
+ * - kunna ta bort varor från kundkorgen?
  * - (uppdatera summa/vara)
  * - formuläret ska dyka upp när man trycker på beställ
  */
