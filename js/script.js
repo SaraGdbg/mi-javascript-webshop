@@ -218,10 +218,13 @@ const teacups = [
  * PRINT TEACUPS TO WEBSHOP
  * PLUS/MINUS BTNS
  */
+//Väljer rätt ställe att skriva ut varorna i
 const teacupContainer = document.querySelector("#teacup-container");
 
+// Skriver ut varorna
 printProducts();
 
+// Funktion som minskar 1 på vald varas amount efter tryck på minusknappen och sedan skriver ut en uppdaterade varulista där varans amount är uppdaterat
 function decreaseAmount(e) {
   let index = e.target.id.replace("decreaseBtn-", "");
   index = Number(index);
@@ -230,6 +233,7 @@ function decreaseAmount(e) {
   printProducts();
 }
 
+// Ökar vald varas amount med 1 vid knapptryckning på plusknappen
 function increaseAmount(e) {
   let index = e.target.id.replace("increaseBtn-", "");
   index = Number(index);
@@ -238,6 +242,7 @@ function increaseAmount(e) {
   printProducts();
 }
 
+// Funktionen som skriver ut all information om samtliga varor i min array
 function printProducts() {
   teacupContainer.innerHTML = "";
 
@@ -259,11 +264,13 @@ function printProducts() {
     </div>`;
   }
 
+  // Väljer ut minusknappen och lägger till en eventlyssnare som svarar på klick och då kör funktionen ovan
   const decreaseButtons = document.querySelectorAll(".decrease");
   decreaseButtons.forEach((btn) => {
     btn.addEventListener("click", decreaseAmount);
   });
 
+  //Väljer ut plusknappen och lägger till en eventlyssnare som svarar påp klikc och då kör funktionen ovan
   const increaseButtons = document.querySelectorAll(".increase");
   increaseButtons.forEach((btn) => {
     btn.addEventListener("click", increaseAmount);
@@ -278,7 +285,40 @@ function printProducts() {
 const basketAmount = document.querySelector("#basketSum");
 
 console.log(basketAmount);
+
 /* Skriv färdigt här! Summa i varukorgen i headern. Eller antal varor? */
+
+/**
+ * SORT PRODUCTS
+ */
+
+// Väljer ut var i HTML knapparna ska hamna
+const sortTeacups = document.querySelector("#sort");
+
+// Knappar för de olika sorteringarna
+sortTeacups.innerHTML += `
+  <p id="sortText">Sortera produkter på:</p>
+  <div class="sortBtns">
+    <button id="sortRatingBtn">Betyg</button> | 
+    <button id="sortCategoryBtn">Kategori</button> | 
+    <button id="sortNameBtn">Namn</button> | 
+    <button id="sortPriceBtn">Pris</button>
+  </div>
+`;
+
+const sortPriceBtn = document.querySelector("#sortPriceBtn");
+
+sortPriceBtn.addEventListener("click", sortPrice);
+
+/*function sortPrice() {
+  teacups.sort 
+}*/
+// FUNKAR INTE!
+
+//Sortera på pris
+// Välj rätt knapp
+//Lägg på en eventlistener som startar funktionen som sorterar på pris
+//Skapa en funktion som sorterar varorna på pris
 
 /**
  * SHOPPING BASKET

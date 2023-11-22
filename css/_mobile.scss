@@ -101,7 +101,7 @@ h3 {
   font-size: 2.7rem;
   letter-spacing: 3px;
   margin: 40px 0 5px 0;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 
 .teacups {
@@ -116,7 +116,8 @@ h3 {
     filter: drop-shadow(2px 2px 5px #000);
     margin: 10px 25px;
     img {
-      max-width: 500px;
+      width: 70vw;
+      max-width: 400px;
     }
   }
   .price {
@@ -132,16 +133,23 @@ h3 {
   }
 }
 
+#sort {
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    margin: 10px 0;
+  }
+  .sortBtns button {
+    background-color: var(--turqouise);
+    border: none;
+  }
+}
+
 // Lägg till tydligare övergångar mellan varorna! Vilket pris och vilka knappar hör till vilken vara? Behöver vara tydligare!
 
 /* -------------------------------------------------- BUTTONS ------------------------------------------------- */
-
-.buttonsSubtractAdd {
-  margin-top: 100px;
-  input {
-    width: 60px;
-  }
-}
 
 /* ------------------------------------------------ PLUS/MINUS BTNS ----------------------------------------------- */
 
