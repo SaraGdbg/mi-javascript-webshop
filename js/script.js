@@ -207,7 +207,7 @@ const teacups = [
     amount: 0,
     img: {
       src: "assets/imgs/16KORNBLÅpexels-trina-snow-1033137.jpg",
-      alt: "En kornblåp högblank kopp fylld med te med mjölk i , på tillhörande fat.",
+      alt: "En kornblå högblank kopp fylld med te med mjölk i , på tillhörande fat.",
       width: 500,
       height: 500,
     },
@@ -261,7 +261,7 @@ function printProducts() {
         <input type="number" class="chosenAmount" value="${teacups[i].amount}">
         <button class="increase" id="increaseBtn-${i}">+</button>
       </div>
-      <button id="addToBasket">Lägg till i varukorgen</button>
+      <button class="addToCart" id="addToCart">Lägg till i varukorgen</button>
     </div>`;
   }
 
@@ -271,7 +271,7 @@ function printProducts() {
     btn.addEventListener("click", decreaseAmount);
   });
 
-  //Väljer ut plusknappen och lägger till en eventlyssnare som svarar påp klikc och då kör funktionen ovan
+  //Väljer ut plusknappen och lägger till en eventlyssnare som svarar på klick och då kör funktionen ovan
   const increaseButtons = document.querySelectorAll(".increase");
   increaseButtons.forEach((btn) => {
     btn.addEventListener("click", increaseAmount);
@@ -281,11 +281,11 @@ function printProducts() {
 /* Koppla ihop valt antal med kundkorgen */
 
 /**
- * SHOPPING BASKET HEADER
+ * SHOPPING CART HEADER
  */
-const basketAmount = document.querySelector("#basketSum");
+/*const basketAmount = document.querySelector("#basketSum");
 
-console.log(basketAmount);
+console.log(basketAmount);*/
 
 /* Skriv färdigt här! Summa i varukorgen i headern. Eller antal varor? */
 
@@ -407,6 +407,41 @@ console.table(teacups);
  * - (uppdatera summa/vara)
  * - formuläret ska dyka upp när man trycker på beställ
  */
+
+/*
+// Väljer ut i HTML var varukorgen ska vara
+const shoppingCart = document.querySelector("#shoppingCart");
+console.log(shoppingCart);
+
+// Skapar en kopia av teacupsarrayen
+let teacupsCopy = [...teacups];
+// Skapar en tom array for varukorgen
+let order = [];
+
+// Väljer alla "Lägg till i varukorgen"-knappar
+const addToCartBtns = document.querySelectorAll(".addToCart");
+
+//Lägger till eventlyssnare som efter klick kör
+addToCartBtns.forEach((btn) => {
+  btn.addEventListener("click", addToCart);
+});
+
+//Kollar igenom hela arrayen teacups och om någon har amount > 0 läggs varan i arrayen order
+function addToCart() {
+  for (let i = 0; i < teacups.length; i++) {
+    if (teacupsCopy[i].amount > 0) {
+      order.push(teacupsCopy[i]);
+    }
+  }
+
+  console.log(order);
+
+  //Skriva ut varorna i varukorgen
+  shoppingCart.innerHTML = "";
+  for (let i = 0; i < order.length; i++) {
+    <h3>${order[i].name}</h3>;
+  }
+}*/
 
 /**
  * varukorg
