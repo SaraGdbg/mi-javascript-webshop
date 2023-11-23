@@ -251,8 +251,9 @@ function printProducts() {
     <div class="teacups" id="teacup-${i}">
       <h3>${teacups[i].name}</h3>
       <span class="rating">Betyg: ${teacups[i].rating}/5</span>
+      <span class="category">${teacups[i].category}</span>
       <div id="img-conatiner-${i}" class="img-containers">
-        <img src="${teacups[i].img.src}" alt="${teacups[i].img.alt}" id="teacup-img-${i} width="500" height="500" loading = "lazy"/>
+        <img src="${teacups[i].img.src}" alt="${teacups[i].img.alt}" id="teacup-img-${i} width="2048" height="2048" loading = "lazy"/>
       </div>
       <span class="price">Pris: ${teacups[i].price} kr</span>
       <div class="buttons">
@@ -306,6 +307,66 @@ sortTeacups.innerHTML += `
   </div>
 `;
 
+// SORT BY RATING
+// Väljer namnknappen
+const sortRatingBtn = document.querySelector("#sortRatingBtn");
+
+// Lyssnar efter klick och kör då
+sortRatingBtn.addEventListener("click", sortRating);
+
+// Funktion som sorterar efter betyg, högt -> lågt
+function sortRating() {
+  teacups.sort((teacup1, teacup2) => {
+    return teacup2.rating - teacup1.rating;
+  });
+
+  printProducts();
+}
+
+// SORT BY CATEGORY
+// Väljer kategoriknappen
+const sortCategoryBtn = document.querySelector("#sortCategoryBtn");
+
+// Lyssnar efter klick och kör då
+sortCategoryBtn.addEventListener("click", sortCategory);
+
+// Funktion som sorterar efter kategori, bokstavsordning
+function sortCategory() {
+  teacups.sort((teacup1, teacup2) => {
+    if (teacup1.category < teacup2.category) {
+      return -1;
+    }
+    if (teacup1.category > teacup2.category) {
+      return 1;
+    }
+    return 0;
+  });
+
+  printProducts();
+}
+
+//SORT BY NAME
+// Väljer namnknappen
+const sortNameBtn = document.querySelector("#sortNameBtn");
+
+// Lyssnar efter klick och kör då
+sortNameBtn.addEventListener("click", sortName);
+
+// Funktion som sorterar efter namn, bokstavsordning
+function sortName() {
+  teacups.sort((teacup1, teacup2) => {
+    if (teacup1.name < teacup2.name) {
+      return -1;
+    }
+    if (teacup1.name > teacup2.name) {
+      return 1;
+    }
+    return 0;
+  });
+
+  printProducts();
+}
+
 // SORT BY PRICE
 // Väljer prisknappen
 const sortPriceBtn = document.querySelector("#sortPriceBtn");
@@ -322,20 +383,7 @@ function sortPrice() {
   printProducts();
 }
 
-// SORT BY RATING
-// Väljer namnknappen
-const sortRatingBtn = document.querySelector("#sortRatingBtn");
-
-// Lyssnar efter klick och kör då
-sortRatingBtn.addEventListener("click", sortRating);
-
-function sortRating() {
-  teacups.sort((teacup1, teacup2) => {
-    return teacup1.rating - teacup2.rating;
-  });
-
-  printProducts();
-}
+//Funktionen kan förkortas till teacups.sort((teacup1, teacup2) => teacup1.price - teacup2.price);
 
 console.table(teacups);
 
@@ -358,4 +406,13 @@ console.table(teacups);
  * - kunna ta bort varor från kundkorgen?
  * - (uppdatera summa/vara)
  * - formuläret ska dyka upp när man trycker på beställ
+ */
+
+/**
+ * varukorg
+ * gör en plats för varukorg
+ * skapa en funktion som heter typ update order summary
+ * filtrera alla varor som har amount > 0
+ * skapa en ny array med de varorna
+ * printa den arrayen i varukorgen
  */
