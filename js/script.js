@@ -434,7 +434,12 @@ function addToCart() {
   console.log(order);
 
   //Skriver ut varorna till varukorgen
-  console.log(shoppingCart);
+  shoppingCart.innerHTML = "";
+  for (let i = 0; i < order.length; i++) {
+    shoppingCart.innerHTML += `
+    <h4>${order[i].name}</h4>
+    `;
+  }
 }
 
 /**
