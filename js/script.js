@@ -1,4 +1,3 @@
-console.log("this works!");
 /**
  *  TEACUPS
  */
@@ -228,8 +227,11 @@ printProducts();
 function decreaseAmount(e) {
   let index = e.target.id.replace("decreaseBtn-", "");
   index = Number(index);
-  teacups[index].amount -= 1;
-
+  if (teacups[index].amount < 1) {
+    teacups[index].amount = 0;
+  } else {
+    teacups[index].amount -= 1;
+  }
   printProducts();
 }
 
@@ -275,6 +277,14 @@ function printProducts() {
   const increaseButtons = document.querySelectorAll(".increase");
   increaseButtons.forEach((btn) => {
     btn.addEventListener("click", increaseAmount);
+  });
+
+  // Väljer alla "Lägg till i varukorgen"-knappar
+  const addToCartBtns = document.querySelectorAll(".addToCart");
+
+  //Lägger till eventlyssnare som efter klick kör
+  addToCartBtns.forEach((btn) => {
+    btn.addEventListener("click", addToCart);
   });
 }
 
@@ -383,9 +393,8 @@ function sortPrice() {
   printProducts();
 }
 
-//Funktionen kan förkortas till teacups.sort((teacup1, teacup2) => teacup1.price - teacup2.price);
-
 console.table(teacups);
+//Funktionen kan förkortas till teacups.sort((teacup1, teacup2) => teacup1.price - teacup2.price);
 
 //Sortera på pris
 // Välj rätt knapp
@@ -408,40 +417,25 @@ console.table(teacups);
  * - formuläret ska dyka upp när man trycker på beställ
  */
 
-/*
-// Väljer ut i HTML var varukorgen ska vara
+//Väljer ut i HTML var varukorgen ska vara
 const shoppingCart = document.querySelector("#shoppingCart");
-console.log(shoppingCart);
 
-// Skapar en kopia av teacupsarrayen
-let teacupsCopy = [...teacups];
 // Skapar en tom array for varukorgen
 let order = [];
 
-// Väljer alla "Lägg till i varukorgen"-knappar
-const addToCartBtns = document.querySelectorAll(".addToCart");
-
-//Lägger till eventlyssnare som efter klick kör
-addToCartBtns.forEach((btn) => {
-  btn.addEventListener("click", addToCart);
-});
-
 //Kollar igenom hela arrayen teacups och om någon har amount > 0 läggs varan i arrayen order
 function addToCart() {
+  console.log("knappen trycktes på!");
   for (let i = 0; i < teacups.length; i++) {
-    if (teacupsCopy[i].amount > 0) {
-      order.push(teacupsCopy[i]);
+    if (teacups[i].amount > 0) {
+      order.push(teacups[i]);
     }
   }
-
   console.log(order);
 
-  //Skriva ut varorna i varukorgen
-  shoppingCart.innerHTML = "";
-  for (let i = 0; i < order.length; i++) {
-    <h3>${order[i].name}</h3>;
-  }
-}*/
+  //Skriver ut varorna till varukorgen
+  console.log(shoppingCart);
+}
 
 /**
  * varukorg
