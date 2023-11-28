@@ -233,6 +233,7 @@ function decreaseAmount(e) {
     teacups[index].amount -= 1;
   }
   printProducts();
+  addToCart();
 }
 
 // Ökar vald varas amount med 1 vid knapptryckning på plusknappen
@@ -240,8 +241,9 @@ function increaseAmount(e) {
   let index = e.target.id.replace("increaseBtn-", "");
   index = Number(index);
   teacups[index].amount += 1;
-
+  //addToCart
   printProducts();
+  addToCart();
 }
 
 // Funktionen som skriver ut all information om samtliga varor i min array
@@ -260,10 +262,8 @@ function printProducts() {
       <span class="price">Pris: ${teacups[i].price} kr</span>
       <div class="buttons">
         <button class="decrease" id="decreaseBtn-${i}">-</button>
-        <input type="number" class="chosenAmount" value="${teacups[i].amount}">
         <button class="increase" id="increaseBtn-${i}">+</button>
       </div>
-      <button class="addToCart" id="addToCart">Lägg till i varukorgen</button>
     </div>`;
   }
 
@@ -418,35 +418,65 @@ console.table(teacups);
  */
 
 //Väljer ut i HTML var varukorgen ska vara
-const shoppingCart = document.querySelector("#shoppingCart");
+const teacupsInCart = document.querySelector("#teacupsInCart");
+const shippingAndSum = document.querySelector("#shippingAndSum");
 
 // Skapar en tom array for varukorgen
 let order = [];
 
+//Uppdaterar summan i varukorgen, men lägger såhär enbart ihop x1 av varje vara oavsett hur många som valts
+/*function updateSum() {
+  let sum = order.reduce((a, b) => a + b.price, 0);
+  console.log(sum);
+}*/
+
 //Kollar igenom hela arrayen teacups och om någon har amount > 0 läggs varan i arrayen order
 function addToCart() {
   console.log("knappen trycktes på!");
+  order = [];
   for (let i = 0; i < teacups.length; i++) {
     if (teacups[i].amount > 0) {
       order.push(teacups[i]);
     }
   }
-  console.log(order);
+  printCart();
+}
 
-  //Skriver ut varorna till varukorgen
-  shoppingCart.innerHTML = "";
+//Skriver ut varorna till varukorgen
+function printCart() {
+  teacupsInCart.innerHTML = "";
+  shippingAndSum.innerHTML = "";
+
+  let sumCart = 0;
+
+  //Räknar ut hur många varor som finns i varukorgen
+  const amountAllTeacups = order.reduce((a, b) => a + b.amount, 0);
+  console.log(amountAllTeacups);
+
+  // Lägger på frakt på 25:- + 10% om man beställer 15 eller färre (annars ingen frakt)
+  if (amountAllTeacups <= 15) {
+    let frakt = 25;
+    sumCart = Math.round(
+      order.reduce((a, b) => a + b.amount * b.price, frakt) * 1.1
+    );
+  } else {
+    sumCart = order.reduce((a, b) => a + b.amount * b.price, 0);
+  }
+
   for (let i = 0; i < order.length; i++) {
-    shoppingCart.innerHTML += `
-    <h4>${order[i].name}</h4>
+    teacupsInCart.innerHTML += `
+    <div>
+     <div class="currentOrder">
+        <p class="cartProductName">${order[i].name}<p>
+        <p class="cartProductAmount">Antal: ${order[i].amount}</p>
+        <p class="cartProductPrice">Pris: ${
+          order[i].amount * order[i].price
+        } kr</p> 
+      </div>`;
+
+    shippingAndSum.innerHTML += `
+      <p class="shipping">Fraktkostnad: 25kr + 10% av summan</p>
+      <p class="cartSum">Totalkostnad: ${sumCart} kr</p>
     `;
   }
 }
-
-/**
- * varukorg
- * gör en plats för varukorg
- * skapa en funktion som heter typ update order summary
- * filtrera alla varor som har amount > 0
- * skapa en ny array med de varorna
- * printa den arrayen i varukorgen
- */

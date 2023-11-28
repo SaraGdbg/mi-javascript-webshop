@@ -57,7 +57,9 @@
 
       <div id="shoppingCart">
         <h2>Varukorg</h2>
-        <div id="teacupsInCart"></div>
+
+        <div id="teacupsInCart">Varukorgen är tom.</div>
+        <div id="shippingAndSum"></div>
 
         <!--Varukorgen här-->
       </div>
@@ -87,6 +89,10 @@
           <input type="text" required="required" placeholder="ORT" />
         </label>
         <label>
+          Portkod:
+          <input type="text" required="required" placeholder="Portkod" />
+        </label>
+        <label>
           Telefonnummer:
           <input type="text" required="required" placeholder="Telefonnummer" />
         </label>
@@ -95,6 +101,8 @@
           <input type="text" required="required" placeholder="E-postadress" />
         </label>
       </form>
+
+      <!-- Formuläret saknar knappar för rensa (+ nolla amount så korgen töms) och skicka/beställ samt val för betalsätt samt checkboxar -->
     </main>
 
     <!----------------------------------------- SCRIPT-------------------------------------------------->
