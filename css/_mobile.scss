@@ -161,6 +161,21 @@ h3 {
 }
 
 /* -------------------------------------------------- CART ------------------------------------------------- */
+.currentOrder {
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: space-around;
+  align-items: baseline;
+  .cartProductName,
+  .cartProductAmount,
+  .cartProductPrice {
+    margin: 10px 0 10px 0;
+  }
+  .cartProductName {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+  }
+}
 
 /* -------------------------------------------------- FORM ------------------------------------------------- */
 

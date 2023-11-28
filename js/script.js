@@ -461,22 +461,21 @@ function printCart() {
     );
   } else {
     sumCart = order.reduce((a, b) => a + b.amount * b.price, 0);
+    alert("Du har uppnått fri frakt!"); /* Hur göra på mobil? */
   }
 
   for (let i = 0; i < order.length; i++) {
     teacupsInCart.innerHTML += `
-    <div>
      <div class="currentOrder">
         <p class="cartProductName">${order[i].name}<p>
-        <p class="cartProductAmount">Antal: ${order[i].amount}</p>
+        <p class="cartProductAmount">${order[i].amount} st</p>
         <p class="cartProductPrice">Pris: ${
           order[i].amount * order[i].price
         } kr</p> 
       </div>`;
-
-    shippingAndSum.innerHTML += `
+  }
+  shippingAndSum.innerHTML = `
       <p class="shipping">Fraktkostnad: 25kr + 10% av summan</p>
       <p class="cartSum">Totalkostnad: ${sumCart} kr</p>
     `;
-  }
 }
