@@ -491,8 +491,8 @@ function printCart() {
     }*/
 
   //Helgpåslag på pris - stämmer nu, men hur uppdatera priset på varje munk?
-  //
-
+  //Själva det uppdaterade priset ligger i en variabel inne i funktionen. Kan jag lösa så att jag
+  // får ut den och kan uppdatera munkens pris. Se Jennis tipsvideo, länk KW
   if ((isFriday && currentHour >= 12) || (isMonday && currentHour <= 3)) {
     priceIncrease = 1.15;
   }
