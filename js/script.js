@@ -420,6 +420,7 @@ console.table(teacups);
 //Väljer ut i HTML var varukorgen ska vara
 const teacupsInCart = document.querySelector("#teacupsInCart");
 const shippingAndSum = document.querySelector("#shippingAndSum");
+const discounts = document.querySelector("#discounts");
 
 // Skapar en tom array for varukorgen
 let order = [];
@@ -442,20 +443,29 @@ function addToCart() {
   printCart();
 }
 
+let sumCart = 0;
+let amountAllTeacups = 0;
+
+let priceIncrease = 1;
+const orderDate = new Date();
+const isFriday = orderDate.getDay() == 3; // Ändra till 6a för fredag!
+const isMonday = orderDate.getDay() == 1;
+const currentHour = orderDate.getHours();
+const frakt = 25;
+
 //Skriver ut varorna till varukorgen
 function printCart() {
   teacupsInCart.innerHTML = "";
   shippingAndSum.innerHTML = "";
-
-  let sumCart = 0;
-
   //Räknar ut hur många varor som finns i varukorgen
-  const amountAllTeacups = order.reduce((a, b) => a + b.amount, 0);
+  amountAllTeacups = order.reduce((a, b) => a + b.amount, 0);
   console.log(amountAllTeacups);
+
+  //Räknar ut summan i varukorgen
+  /*sumCart = Math.round(order.reduce((a, b) => a + b.amount * a + b.price, 0));*/
 
   // Lägger på frakt på 25:- + 10% om man beställer 15 eller färre (annars ingen frakt)
   if (amountAllTeacups <= 15) {
-    let frakt = 25;
     sumCart = Math.round(
       order.reduce((a, b) => a + b.amount * b.price, frakt) * 1.1
     );
@@ -464,14 +474,39 @@ function printCart() {
     alert("Du har uppnått fri frakt!"); /* Hur göra på mobil? */
   }
 
+  // Måndagsrabatten
+  if (orderDate.getDay() === 1 && orderDate.getHours() < 10) {
+    sumCart = Math.round(sumCart * 0.9);
+    discounts.innerHTML = `<p class="discountMonday">Måndagsrabatt: 10% på hela beställningen.</p>`;
+  }
+
+  //Rabatt på priset på en vara om man köper > 10
+  /*for (let i = 0; i < order.length; i++)
+    if (order[i].amount > 0) {
+      let teacupPrice = order[i].price;
+      if (order[i].amount >= 10) {
+        teacupPrice *= 0.9;
+        console.log(order[i].price);
+      }
+    }*/
+
+  //Helgpåslag på pris - stämmer nu, men hur uppdatera priset på varje munk?
+  //
+
+  if ((isFriday && currentHour >= 12) || (isMonday && currentHour <= 3)) {
+    priceIncrease = 1.15;
+  }
+
+  // Uppdaterar varukorgen
+
   for (let i = 0; i < order.length; i++) {
+    const adjustedTeacupPrice = order[i].price * priceIncrease;
+    const adjustedTeacupSum = Math.round(adjustedTeacupPrice * order[i].amount);
     teacupsInCart.innerHTML += `
      <div class="currentOrder">
         <p class="cartProductName">${order[i].name}<p>
         <p class="cartProductAmount">${order[i].amount} st</p>
-        <p class="cartProductPrice">Pris: ${
-          order[i].amount * order[i].price
-        } kr</p> 
+        <p class="cartProductPrice">Pris: ${adjustedTeacupSum} kr</p> 
       </div>`;
   }
   shippingAndSum.innerHTML = `
