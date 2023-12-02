@@ -1,7 +1,12 @@
 body {
   background-color: red;
+  header {
+    height: 200px;
+  }
 }
 
 .teacups {
+  display: grid;
+  grid-template-columns: 4 1fr;
   max-width: 1900px;
 }

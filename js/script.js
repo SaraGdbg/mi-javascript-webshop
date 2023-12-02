@@ -461,7 +461,7 @@ function printCart() {
   amountAllTeacups = order.reduce((a, b) => a + b.amount, 0);
   console.log(amountAllTeacups);
 
-  //Räknar ut summan i varukorgen
+  //Räknar ut summan i varukorgen - men varför funkar inte den här?
   /*sumCart = Math.round(order.reduce((a, b) => a + b.amount * a + b.price, 0));*/
 
   // Lägger på frakt på 25:- + 10% om man beställer 15 eller färre (annars ingen frakt)
@@ -480,7 +480,7 @@ function printCart() {
     discounts.innerHTML = `<p class="discountMonday">Måndagsrabatt: 10% på hela beställningen.</p>`;
   }
 
-  //Rabatt på priset på en vara om man köper > 10
+  //Rabatt på priset på en vara om man köper > 10, missar något här med..! Inte klar
   /*for (let i = 0; i < order.length; i++)
     if (order[i].amount > 0) {
       let teacupPrice = order[i].price;

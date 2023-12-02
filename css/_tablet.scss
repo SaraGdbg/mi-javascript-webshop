@@ -2,7 +2,8 @@ body {
   background-color: orange;
 
   .teacups {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2 1fr;
   }
   #teacup-container {
     display: flex;
