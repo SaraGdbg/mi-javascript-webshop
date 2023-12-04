@@ -447,6 +447,7 @@ const isMonday = orderDate.getDay() == 1;
 const currentHour = orderDate.getHours();
 const frakt = 25;
 
+let teacupPrice = 0;
 let adjustedTeacupPrice = 0;
 let adjustedTeacupSum = 0;
 
@@ -477,33 +478,27 @@ function printCart() {
     discounts.innerHTML = `<p class="discountMonday">Måndagsrabatt: 10% på hela beställningen.</p>`;
   }
 
-  /*
-  //Rabatt på priset på en vara om man köper > 10
-  for (let i = 0; i < order.length; i++)
-    if (order[i].amount > 0) {
-      let teacupPrice = order[i].price;
-      if (order[i].amount >= 10) {
-        teacupPrice *= 0.9;
-        printProducts();
-      }
-    }*/
-
   //Helgpåslag på pris - stämmer nu
   // Se Jennis tipsvideo, länk KW
   if ((isFriday && currentHour >= 15) || (isMonday && currentHour <= 3)) {
     priceIncrease = 1.15;
   }
 
-  // Uppdaterar varukorgen
-
+  // Skriver ut i varukorgen varukorgen
   for (let i = 0; i < order.length; i++) {
-    adjustedTeacupPrice = order[i].price * priceIncrease;
+    teacupPrice = order[i].price;
+    if (order[i].amount >= 10) {
+      teacupPrice *= 0.9;
+    }
+    // Uppdaterar pris för helgpåslag, men skriver inte ut det i arrayen
+    adjustedTeacupPrice = teacupPrice * priceIncrease;
     adjustedTeacupSum = Math.round(adjustedTeacupPrice * order[i].amount);
+
     teacupsInCart.innerHTML += `
      <div class="currentOrder">
         <p class="cartProductName">${order[i].name}<p>
         <p class="cartProductAmount">${order[i].amount} st</p>
-        <p class="cartProductPrice">Pris: ${adjustedTeacupPrice} kr</p>
+        <p class="cartProductPrice">Pris: ${adjustedTeacupSum} kr</p>
       </div>`;
   }
   shippingAndSum.innerHTML = `
@@ -511,3 +506,8 @@ function printCart() {
       <p class="cartSum">Totalkostnad: ${sumCart} kr</p>
     `;
 }
+
+// Beställknappen ska vara inaktiv tills formuläret är ifyllt korrekt
+// Lägg till orderBtn.removeAttribut('disabled') efter att alla fält är korrekt ifyllda
+const orderBtn = document.querySelector(".orderBtn");
+console.log(orderBtn);
