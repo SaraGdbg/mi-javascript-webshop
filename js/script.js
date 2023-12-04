@@ -288,8 +288,6 @@ function printProducts() {
   });
 }
 
-/* Koppla ihop valt antal med kundkorgen */
-
 /**
  * SHOPPING CART HEADER
  */
@@ -396,15 +394,10 @@ function sortPrice() {
 console.table(teacups);
 //Funktionen kan förkortas till teacups.sort((teacup1, teacup2) => teacup1.price - teacup2.price);
 
-//Sortera på pris
-// Välj rätt knapp
-//Lägg på en eventlistener som startar funktionen som sorterar på pris
-//Skapa en funktion som sorterar varorna på pris
-
 /**
  * SHOPPING BASKET
  *
- * - välja antal av en vara
+
  * - lägga varan i kundkorgen (+visuell feedback)
  *   = evenlistener på köp-knappen -> funktion som kopierar sort + antal + pris till kundkorgen
  * - varan ska dyka upp i kundkorgen
@@ -451,13 +444,20 @@ let teacupPrice = 0;
 let adjustedTeacupPrice = 0;
 let adjustedTeacupSum = 0;
 
+const basketAmount = document.querySelector("#basketAmount");
+
 //Skriver ut varorna till varukorgen
 function printCart() {
   teacupsInCart.innerHTML = "";
   shippingAndSum.innerHTML = "";
+  basketAmount.innerHTML = "";
+
   //Räknar ut hur många varor som finns i varukorgen
   amountAllTeacups = order.reduce((a, b) => a + b.amount, 0);
   console.log(amountAllTeacups);
+
+  // Uppdaterar antalet i varukorgen i headern
+  basketAmount.innerHTML = `${amountAllTeacups}`;
 
   //Räknar ut summan i varukorgen
   sumCart = Math.round(order.reduce((a, b) => a + b.amount * b.price, 0));

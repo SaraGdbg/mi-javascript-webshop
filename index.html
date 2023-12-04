@@ -25,7 +25,7 @@
       </div>
       <div class="basket">
         <span class="material-symbols-outlined">shopping_cart</span>
-        <div class="sum"><span id="basketSum"></span></div>
+        <div class="amount"><span id="basketAmount"></span></div>
       </div>
     </header>
     <main>
@@ -38,6 +38,7 @@
         </p>
         <img
           src="./assets/imgs/pexels-leah-kelley-851553.jpg"
+          alt="Bild på en kaffekopp tagen rakt uppifrån. I kaffekoppen syns kaffe med ett hjärta av skummad mjölk."
           class="background-img"
           loading="lazy"
         />
@@ -100,6 +101,18 @@
         <label>
           E-postadress:
           <input type="text" required="required" placeholder="E-postadress" />
+        </label>
+        <label>
+          Rabattkod:
+          <input type="text" required="required" placeholder="Rabattkod" />
+        </label>
+        <label>
+          <input type="checkbox" id="personalInformation" />Jag godkänner Teas
+          koppars hantering av personupppgifter
+        </label>
+        <label>
+          <input type="checkbox" id="newsletterConfirmation" checked />Ja, tack!
+          Jag vill gärna få ert nyhetsbrev
         </label>
         <div class="formBtns">
           <button type="submit" class="orderBtn" disabled>Beställ</button>
