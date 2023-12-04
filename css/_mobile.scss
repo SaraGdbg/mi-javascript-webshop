@@ -67,6 +67,12 @@ header {
     display: flex;
     font-style: italic;
   }
+
+  .basket {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /* -------------------------------------------------- PAGE 1 ------------------------------------------------- */
@@ -159,18 +165,21 @@ h3 {
 }
 
 /* -------------------------------------------------- CART ------------------------------------------------- */
+.teacupsInCart {
+  margin: 0 15px;
+}
 .currentOrder {
-  display: flex;
-  font-size: 1.5rem;
-  justify-content: space-around;
   align-items: baseline;
+  display: flex;
+  font-size: 1.3rem;
+  justify-content: space-around;
   .cartProductName,
   .cartProductAmount,
   .cartProductPrice {
-    margin: 10px 0 10px 0;
+    margin: 8px 0 8px 0;
   }
   .cartProductName {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     text-transform: uppercase;
   }
 }
@@ -196,8 +205,16 @@ form {
       /*font-family: "Inter";*/
       font-size: 1rem;
       margin-left: 10px;
-      max-width: 150px;
+      max-width: 200px;
       padding: 3px 10px;
     }
   }
+}
+.checkboxLabel {
+  display: flex;
+  font-size: 1rem;
+}
+.personalInformation,
+.newsletterConfirmation {
+  margin: 5px;
 }

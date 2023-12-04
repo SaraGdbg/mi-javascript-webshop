@@ -25,7 +25,7 @@
       </div>
       <div class="basket">
         <span class="material-symbols-outlined">shopping_cart</span>
-        <div class="amount"><span id="basketAmount"></span></div>
+        <div class="amount"><span class="basketAmount"></span></div>
       </div>
     </header>
     <main>
@@ -59,9 +59,9 @@
       <div id="shoppingCart">
         <h2>Varukorg</h2>
 
-        <div id="teacupsInCart">Varukorgen är tom.</div>
-        <div id="discounts"></div>
-        <div id="shippingAndSum"></div>
+        <div class="teacupsInCart">Varukorgen är tom.</div>
+        <div class="discounts"></div>
+        <div class="shippingAndSum"></div>
 
         <!--Varukorgen här-->
       </div>
@@ -106,21 +106,24 @@
           Rabattkod:
           <input type="text" required="required" placeholder="Rabattkod" />
         </label>
-        <label>
-          <input type="checkbox" id="personalInformation" />Jag godkänner Teas
-          koppars hantering av personupppgifter
+        <label class="checkboxLabel">
+          <input
+            type="checkbox"
+            required="required"
+            class="personalInformation"
+          />Jag godkänner hantering av personupppgifter
         </label>
-        <label>
-          <input type="checkbox" id="newsletterConfirmation" checked />Ja, tack!
-          Jag vill gärna få ert nyhetsbrev
+        <label class="checkboxLabel">
+          <input type="checkbox" class="newsletterConfirmation" checked />Ja,
+          tack! Jag vill gärna få ert nyhetsbrev
         </label>
         <div class="formBtns">
           <button type="submit" class="orderBtn" disabled>Beställ</button>
-          <button type="reset">Avbryt</button>
+          <button type="reset" class="resetBtn">Avbryt</button>
         </div>
       </form>
 
-      <!-- Formuläret saknar knappar för rensa (+ nolla amount så korgen töms) och skicka/beställ samt val för betalsätt samt checkboxar -->
+      <!-- Formuläret saknar knappar för att nolla amount så korgen töms samt val för betalsätt-->
     </main>
 
     <!----------------------------------------- SCRIPT-------------------------------------------------->

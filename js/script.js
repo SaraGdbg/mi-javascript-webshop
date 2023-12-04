@@ -411,9 +411,9 @@ console.table(teacups);
  */
 
 //Väljer ut i HTML var varukorgen ska vara
-const teacupsInCart = document.querySelector("#teacupsInCart");
-const shippingAndSum = document.querySelector("#shippingAndSum");
-const discounts = document.querySelector("#discounts");
+const teacupsInCart = document.querySelector(".teacupsInCart");
+const shippingAndSum = document.querySelector(".shippingAndSum");
+const discounts = document.querySelector(".discounts");
 
 // Skapar en tom array for varukorgen
 let order = [];
@@ -444,7 +444,7 @@ let teacupPrice = 0;
 let adjustedTeacupPrice = 0;
 let adjustedTeacupSum = 0;
 
-const basketAmount = document.querySelector("#basketAmount");
+const basketAmount = document.querySelector(".basketAmount");
 
 //Skriver ut varorna till varukorgen
 function printCart() {
@@ -497,8 +497,8 @@ function printCart() {
     teacupsInCart.innerHTML += `
      <div class="currentOrder">
         <p class="cartProductName">${order[i].name}<p>
-        <p class="cartProductAmount">${order[i].amount} st</p>
-        <p class="cartProductPrice">Pris: ${adjustedTeacupSum} kr</p>
+        <p class="cartProductAmount">${order[i].amount}st</p>
+        <p class="cartProductPrice">Pris: ${adjustedTeacupSum}kr</p>
       </div>`;
   }
   shippingAndSum.innerHTML = `
@@ -511,3 +511,18 @@ function printCart() {
 // Lägg till orderBtn.removeAttribut('disabled') efter att alla fält är korrekt ifyllda
 const orderBtn = document.querySelector(".orderBtn");
 console.log(orderBtn);
+
+// Avbrytknappen ska även tömma varukorgen dvs order[i].amount = 0;
+const resetBtn = document.querySelector(".resetBtn");
+console.log(resetBtn);
+resetBtn.addEventListener("click", emptyCart);
+
+function emptyCart() {
+  for (let i = 0; i < order.length; i++) {
+    order[i].amount = 0;
+    teacupsInCart.innerHTML = "Varukorgen är tom.";
+    shippingAndSum.innerHTML = "";
+    basketAmount.innerHTML = "";
+    console.log("detta funkar!");
+  }
+}
