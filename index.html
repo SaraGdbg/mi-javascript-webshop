@@ -59,7 +59,7 @@
       <div id="shoppingCart">
         <h2>Varukorg</h2>
 
-        <div class="teacupsInCart">Varukorgen är tom.</div>
+        <div class="teacupsInCart" class="emptyCart">Varukorgen är tom.</div>
         <div class="discounts"></div>
         <div class="shippingAndSum"></div>
 
@@ -106,25 +106,79 @@
           Rabattkod:
           <input type="text" required="required" placeholder="Rabattkod" />
         </label>
-        <label class="checkboxLabel">
-          <input
-            type="checkbox"
-            required="required"
-            class="personalInformation"
-          />Jag godkänner hantering av personupppgifter
-        </label>
-        <label class="checkboxLabel">
-          <input type="checkbox" class="newsletterConfirmation" checked />Ja,
-          tack! Jag vill gärna få ert nyhetsbrev
-        </label>
+        </form>
+
+<!-------------------------------------- PAYMENT OPTIONS ---------------------------------------------->
+        
+        <div class="payment">
+          <div class="paymentChoice">
+            <label class="checkboxLabel">
+            <input
+              type="radio"
+              name="paymentOption"
+              class="paymentInvoice"
+              value="invoice"
+              checked
+            /><span>Faktura</span>
+            </label>
+            <label class="checkboxLabel">
+            <input
+              type="radio"
+              name="paymentOption"
+              class="paymentCard"
+              value="card"
+            /><span>Kortbetalning</span>
+            </label>
+          </div>
+          <div class="invoice" id="invoice">
+            <label>
+            <span>Personnummer:</span>
+            <input type="text" id="idNr">
+            </label>
+          </div>
+          <div class="card hidden" id="card">
+            <label>
+              <span>Kortnummer:</span>
+              <input type="number">
+            </label>
+            <label>
+              <span>Datum</span>
+              <span>
+                <input type="number" class="small" placeholder="YY">/<input type="number" class="small" 
+                placeholder="MM">
+              </span>
+            </label>
+            <label>
+              <span>CVC</span>
+              <input type="number" class="cvc" placeholder="123">
+            </label>
+          </div>
+        </div>
+
+<!-------------------------------------- CHECKBOXES ---------------------------------------------->
+
+        <div class="checkboxesInformation">
+          <label class="checkboxLabel">
+            <input
+              type="checkbox"
+              required="required"
+              class="personalInformation"
+            />Jag godkänner hantering av personupppgifter
+          </label>
+          <label class="checkboxLabel">
+            <input type="checkbox" class="newsletterConfirmation" checked />Ja,
+            tack! Jag vill gärna få ert nyhetsbrev
+          </label>
+        </div>
         <div class="formBtns">
           <button type="submit" class="orderBtn" disabled>Beställ</button>
-          <button type="reset" class="resetBtn">Avbryt</button>
+          <button type="reset" class="resetBtn">Avbryt order</button>
         </div>
       </form>
 
-      <!-- Formuläret saknar knappar för att nolla amount så korgen töms samt val för betalsätt-->
+      <!-- Formuläret saknar val för betalsätt-->
     </main>
+    <!-- Footer med kontaktuppgifter? -->
 
     <!----------------------------------------- SCRIPT-------------------------------------------------->
     <script src="js/script.js"></script>

@@ -1,5 +1,5 @@
 /**
- *  TEACUPS
+ ********* TEACUPS **********
  */
 
 const teacups = [
@@ -214,8 +214,8 @@ const teacups = [
 ];
 
 /**
- * PRINT TEACUPS TO WEBSHOP
- * PLUS/MINUS BTNS
+ ********** PRINT TEACUPS TO WEBSHOP **********
+ ********** PLUS/MINUS BTNS **********
  */
 //Väljer rätt ställe att skriva ut varorna i
 const teacupContainer = document.querySelector("#teacup-container");
@@ -289,16 +289,7 @@ function printProducts() {
 }
 
 /**
- * SHOPPING CART HEADER
- */
-/*const basketAmount = document.querySelector("#basketSum");
-
-console.log(basketAmount);*/
-
-/* Skriv färdigt här! Summa i varukorgen i headern. Eller antal varor? */
-
-/**
- * SORT PRODUCTS
+ *********** SORT PRODUCTS **********
  */
 
 // Väljer ut var i HTML knapparna ska hamna
@@ -395,19 +386,7 @@ console.table(teacups);
 //Funktionen kan förkortas till teacups.sort((teacup1, teacup2) => teacup1.price - teacup2.price);
 
 /**
- * SHOPPING BASKET
- *
-
- * - lägga varan i kundkorgen (+visuell feedback)
- *   = evenlistener på köp-knappen -> funktion som kopierar sort + antal + pris till kundkorgen
- * - varan ska dyka upp i kundkorgen
- *   = kundkorgen är en ny array? .push?
- *    Skriva ut vad som finns i kundkorgen (video kryyddhyllan, arrays)
- * - om fler än en vara av samma sort, uppdatera antalet
- * - uppdatera totalsumman
- * - kunna ta bort varor från kundkorgen?
- * - (uppdatera summa/vara)
- * - formuläret ska dyka upp när man trycker på beställ
+ *********** SHOPPING BASKET **********
  */
 
 //Väljer ut i HTML var varukorgen ska vara
@@ -419,6 +398,8 @@ const discounts = document.querySelector(".discounts");
 let order = [];
 
 //Kollar igenom hela arrayen teacups och om någon har amount > 0 läggs varan i arrayen order
+//Kallar på funktionen som skriver ut varukorgen
+//Startar även en timer på funktionen som tömmer varukorgen efter 15 min
 function addToCart() {
   console.log("knappen trycktes på!");
   order = [];
@@ -428,6 +409,7 @@ function addToCart() {
     }
   }
   printCart();
+  setTimeout(cartTimer, 900000);
 }
 
 let sumCart = 0;
@@ -512,7 +494,7 @@ function printCart() {
 const orderBtn = document.querySelector(".orderBtn");
 console.log(orderBtn);
 
-// Avbrytknappen ska även tömma varukorgen dvs order[i].amount = 0;
+// Knapp som avbryter ordern och tömmer varukorgen
 const resetBtn = document.querySelector(".resetBtn");
 console.log(resetBtn);
 resetBtn.addEventListener("click", emptyCart);
@@ -520,9 +502,76 @@ resetBtn.addEventListener("click", emptyCart);
 function emptyCart() {
   for (let i = 0; i < order.length; i++) {
     order[i].amount = 0;
-    teacupsInCart.innerHTML = "Varukorgen är tom.";
+    teacupsInCart.innerHTML = `<p class="emptyCart">Varukorgen är tom.</p>`;
     shippingAndSum.innerHTML = "";
     basketAmount.innerHTML = "";
     console.log("detta funkar!");
+  }
+}
+function clearMsg() {
+  console.log("HEJ"); // Kom ihåg att ta bort sedan!
+  teacupsInCart.innerHTML = `<p class="emptyCart">Varukorgen är tom.</p>`;
+}
+
+// Funktion som tömmer varukorgen efter 15 samt meddelar kunden
+function cartTimer() {
+  emptyCart();
+  teacupsInCart.innerHTML += `
+    <p class="timeOutMsg">Tiden för att slutföra köpet har gått ut. Välkommen åter!</p>
+  `;
+  setTimeout(clearMsg, 5000);
+}
+
+/**
+ *********** FORM & ORDER FUNCTION **********
+ */
+
+// Väljer ut knapparna för val av betalmetod + gör en array av dem
+const cardInvoiceRadios = Array.from(
+  document.querySelectorAll('input[name="paymentOption"]')
+);
+
+// Skapar variabler av knapparna
+const invoiceOption = document.querySelector("#invoice");
+const cardOption = document.querySelector("#card");
+let selectedPaymentOption = "invoice";
+
+//Lägger på en eventlistener som registrerar vilket av valen som är aktivt och startar
+// funktionen som togglar mellan vilka inputfält som ska synas
+cardInvoiceRadios.forEach((radioBtn) => {
+  radioBtn.addEventListener("change", switchPaymentMethod);
+});
+
+// Funktion som togglar mellan synlighet på inpufält beroende på vald betalmetod
+function switchPaymentMethod(e) {
+  invoiceOption.classList.toggle("hidden");
+  cardOption.classList.toggle("hidden");
+
+  selectedPaymentOption = e.target.value;
+}
+
+// Väljer ut inputfältet för personnummer
+const personalId = document.querySelector("#idNr");
+
+// Lägger till en eventlistener som lyssnar efter förändringar i fältet för personnr
+personalId.addEventListener("change", activateOrderButton);
+
+const personalIdRegEx = new RegExp(
+  /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
+);
+
+//
+function isPersonalIdNumberValid() {
+  return personalIdRegEx.exec(personalId.value);
+}
+
+function activateOrderButton() {
+  if (selectedPaymentOption === "invoice" && isPersonalIdNumberValid()) {
+    orderBtn.removeAttribute("disabled");
+  } else if (
+    selectedPaymentOption === "invoice" &&
+    !isPersonalIdNumberValid()
+  ) {
+    orderBtn.setAttribute("disabled", "");
   }
 }
