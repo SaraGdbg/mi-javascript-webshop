@@ -489,11 +489,6 @@ function printCart() {
     `;
 }
 
-// Beställknappen ska vara inaktiv tills formuläret är ifyllt korrekt
-// Lägg till orderBtn.removeAttribut('disabled') efter att alla fält är korrekt ifyllda
-const orderBtn = document.querySelector(".orderBtn");
-console.log(orderBtn);
-
 // Knapp som avbryter ordern och tömmer varukorgen
 const resetBtn = document.querySelector(".resetBtn");
 console.log(resetBtn);
@@ -525,21 +520,96 @@ function cartTimer() {
 /**
  *********** FORM & ORDER FUNCTION **********
  */
+// Variabler för att välja inputrutorna i formuläret
+const firstNameInput = document.querySelector("#nameInput");
+const lastnameInput = document.querySelector("#lastnameInput");
+const adressInput = document.querySelector("#adressInput");
+const zipCodeInput = document.querySelector("#zipCodeInput");
+const cityInput = document.querySelector("#cityInput");
+const phoneNumberInput = document.querySelector("#phoneNumberInput");
+const emailInput = document.querySelector("#emailInput");
+const discountInput = document.querySelector("#discountInput");
+
+// Variabler för att kunna skriva ut felmeddelanden i formuläret
+const nameError = document.querySelector(".firstNameError");
+const lastNameError = document.querySelector(".lastNameError");
+const adressError = document.querySelector(".adressNameError");
+const zipCodeError = document.querySelector(".zipCodeError");
+const cityError = document.querySelector(".cityError");
+const phoneNumberError = document.querySelector(".phoneNumberError");
+const emailError = document.querySelector(".emailError");
+const discountError = document.querySelector(".discountError");
+
+// Funktion som kontrollerar om förnamnet är korrekt ifyllt
+
+// REGEX formulär
+// RegEx för namn, efternamn, stad, gatuadress och rabattkod
+const textRegEx = new RegExp(/^[a-zA-ZäöåÄÖÅ]+$i/);
+// RegEx för postnummer
+const zipCodeRegEx = new RegExp(/\d{3}\s?\d{2}/);
+// RegEx för svensk mobilnummer
+const mobileNrRegEx = new RegExp(/^((((0{2}?)|(\+){1})46)|0)7[\d]{8}/);
+// RegEx för emailadress
+const emailRegEx = new RegExp(/^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,6}$/);
 
 // Väljer ut knapparna för val av betalmetod + gör en array av dem
 const cardInvoiceRadios = Array.from(
   document.querySelectorAll('input[name="paymentOption"]')
 );
 
-// Skapar variabler av knapparna
+// Variabler som används för att aktivera beställningsknappen när betalfälten är korrekt ifyllda
+const inputs = [
+  document.querySelector("#creditCardNumber"),
+  document.querySelector("#creditCardYear"),
+  document.querySelector("#creditCardMonth"),
+  document.querySelector("#creditCardCvc"),
+  document.querySelector("#idNr"),
+];
+
+// Väljer ut fältet för felmeddelande
+const errorMsg = document.querySelector(".errorMsg");
+
+// Skapar variabler av knapparna som väljer betalmetod
 const invoiceOption = document.querySelector("#invoice");
 const cardOption = document.querySelector("#card");
+
+// Väljer ut inputfältet för personnummer
+// Låter den vara kvar då den har en egen funktion
+const personalId = document.querySelector("#idNr");
+
+//Default faktura
 let selectedPaymentOption = "invoice";
+
+// Beställknappen ska vara inaktiv tills formuläret är ifyllt korrekt
+// Lägg till orderBtn.removeAttribut('disabled') efter att alla fält är korrekt ifyllda
+const orderBtn = document.querySelector(".orderBtn");
+console.log(orderBtn);
+
+// REGEX betalning
+const personalIdRegEx = new RegExp(
+  /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
+);
+const creditCardNumberRegEx = new RegExp(
+  /^5[1-5][0-9]{14}|^(222[1-9]|22[3-9]\\d|2[3-6]\\d{2}|27[0-1]\\d|2720)[0-9]{12}$/
+); //Mastercard
+
+/**
+ * REGEX-koll för formuläret
+ */
+
+/**
+ * BETALNING OCH BESTÄLLNING
+ */
 
 //Lägger på en eventlistener som registrerar vilket av valen som är aktivt och startar
 // funktionen som togglar mellan vilka inputfält som ska synas
 cardInvoiceRadios.forEach((radioBtn) => {
   radioBtn.addEventListener("change", switchPaymentMethod);
+});
+
+inputs.forEach((input) => {
+  input.addEventListener("change", activateOrderButton);
+  input.addEventListener("focusout", activateOrderButton);
 });
 
 // Funktion som togglar mellan synlighet på inpufält beroende på vald betalmetod
@@ -550,28 +620,59 @@ function switchPaymentMethod(e) {
   selectedPaymentOption = e.target.value;
 }
 
-// Väljer ut inputfältet för personnummer
-const personalId = document.querySelector("#idNr");
+/* ------------------------------- INVOICE ----------------------------------*/
 
 // Lägger till en eventlistener som lyssnar efter förändringar i fältet för personnr
-personalId.addEventListener("change", activateOrderButton);
+// Ta bort change? JP har bägge i sin video
+/*personalId.addEventListener("change", activateOrderButton);*/
+personalId.addEventListener("focusout", activateOrderButton);
 
-const personalIdRegEx = new RegExp(
-  /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
-);
-
-//
+// Funktion som kontrollerar om personnr är giltigt svenskt personnr
 function isPersonalIdNumberValid() {
   return personalIdRegEx.exec(personalId.value);
 }
 
+// Funktion som aktiverar beställningsknappen om alla fält i giltigt ifyllda
 function activateOrderButton() {
-  if (selectedPaymentOption === "invoice" && isPersonalIdNumberValid()) {
-    orderBtn.removeAttribute("disabled");
-  } else if (
-    selectedPaymentOption === "invoice" &&
-    !isPersonalIdNumberValid()
-  ) {
-    orderBtn.setAttribute("disabled", "");
+  orderBtn.setAttribute("disabled", "");
+  /*errorMsg.innerHTML += ``; //Flytta ut felmeddelandet?*/
+
+  if (selectedPaymentOption === "invoice" && !isPersonalIdNumberValid()) {
+    /*errorMsg.innerHTML += `Felaktigt personnummer.`; //Behövs felmeddelande på persnr?*/
+    return;
   }
+  if (selectedPaymentOption === "card") {
+    // Kontrollerar kortnumret
+    if (creditCardNumberRegEx.exec(creditCardNumber.value) === null) {
+      console.warn("Credit card number not valid.");
+      return;
+    }
+    // Kontrollerar året på kortet
+    let year = Number(creditCardYear.value);
+    const today = new Date();
+    const shortYear = Number(String(today.getFullYear()).substring(2));
+
+    if (year > shortYear + 2 || year < shortYear) {
+      console.warn("Credit card year not valid.");
+      return;
+    }
+
+    // Kontrollerar månaden på kortets giltighetstid
+    let month = creditCardMonth.value;
+    let monthString = month.toString();
+    let paddedMonth = monthString.padStart(2, "0");
+
+    if (paddedMonth < 1 || paddedMonth > 12) {
+      console.warn("Credit card month not valid.");
+      return;
+    }
+    // Kontrollerar kortets CVC
+    if (creditCardCvc.value.length != 3) {
+      console.warn("CVC not valid.");
+      return;
+    }
+  }
+
+  orderBtn.removeAttribute("disabled");
 }
+// Lägg till en timer på felmeddelandet?

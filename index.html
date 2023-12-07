@@ -72,23 +72,28 @@
       <form>
         <label>
           Förnamn:
-          <input type="text" required="required" placeholder="Ditt namn" />
+          <input type="text" id="nameInput" required="required" placeholder="Ditt namn" />
+          <span class="firstNameError"></span>
         </label>
         <label>
           Efternamn:
-          <input type="text" required="required" placeholder="Efternamn" />
+          <input type="text"  id="lastnameInput" required="required" placeholder="Efternamn" />
+          <span class="lastNameError"></span>
         </label>
         <label>
           Adress:
-          <input type="text" required="required" placeholder="Adress" />
+          <input type="text" id="adressInput" required="required" placeholder="Adress" />
+          <span class="adressError"></span>
         </label>
         <label>
           Postnummer:
-          <input type="text" required="required" placeholder="NNN NN" />
+          <input type="text"  id="zipCodeInput" required="required" placeholder="NNN NN" />
+          <span class="zipCodeError"></span>
         </label>
         <label>
           Postort:
-          <input type="text" required="required" placeholder="ORT" />
+          <input type="text" id="cityInput" required="required" placeholder="ORT" />
+          <span class="cityError"></span>
         </label>
         <label>
           Portkod:
@@ -96,15 +101,18 @@
         </label>
         <label>
           Telefonnummer:
-          <input type="text" required="required" placeholder="Telefonnummer" />
+          <input type="text" id="phoneNumberInput" required="required" placeholder="Telefonnummer" />
+          <span class="phoneNumberError"></span>
         </label>
         <label>
           E-postadress:
-          <input type="text" required="required" placeholder="E-postadress" />
+          <input type="text" id="emailInput" required="required" placeholder="E-postadress" />
+          <span class="emailError"></span>
         </label>
         <label>
           Rabattkod:
-          <input type="text" required="required" placeholder="Rabattkod" />
+          <input type="text" id="discountInput" required="required" placeholder="Rabattkod" />
+          <span class="discountError"></span>
         </label>
         </form>
 
@@ -139,21 +147,22 @@
           <div class="card hidden" id="card">
             <label>
               <span>Kortnummer:</span>
-              <input type="number">
+              <input type="number" id="creditCardNumber">
             </label>
             <label>
               <span>Datum</span>
               <span>
-                <input type="number" class="small" placeholder="YY">/<input type="number" class="small" 
-                placeholder="MM">
+                <input type="number" class="small" placeholder="YY" id="creditCardYear">/<input type="number" class="small" 
+                placeholder="MM" id="creditCardMonth">
               </span>
             </label>
             <label>
               <span>CVC</span>
-              <input type="number" class="cvc" placeholder="123">
+              <input type="number" class="cvc" placeholder="123" id="creditCardCvc">
             </label>
           </div>
         </div>
+        <div class="errorMsg"><!--Felmeddelanden här!--></div>
 
 <!-------------------------------------- CHECKBOXES ---------------------------------------------->
 
