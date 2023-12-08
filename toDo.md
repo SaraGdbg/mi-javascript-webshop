@@ -43,14 +43,15 @@ x Om kunden inte har lagt beställningen inom 15 minuter så ska beställningsfo
 x Aktivera beställningsknapp när formuläret är korrekt ifyllt
 x val av betalningsmetod
 x fälten ska valideras och beställning ska inte gå att skicka om något är fel ifyllt
+x felmeddelande visas om något är fel
+x bekräftelsemeddelande + levtid när man tryckt på beställ
+x Om kunden inte har lagt beställningen inom 15 minuter så ska beställningsformuläret tömmas/rensas och kunden ska meddelas att denne är för långsam.
+x bekräftelsemeddelande + levtid när man tryckt på beställ
+x visuell feedback på när totalsumman i varukorgen ändras, tex storleksskiftning
 
-- visuell feedback på när totalsumman i varrukorgen ändras, tex storleksskiftning
 - rabatterna för olika dagar/tider/antal varor:
   -- Om kunden har beställt för totalt mer än 800 kr ska det inte gå att välja faktura som betalsätt.
-  -- Om kunden inte har lagt beställningen inom 15 minuter så ska beställningsformuläret tömmas/rensas och kunden ska meddelas att denne är för långsam.
 
-- felmeddelande visas om något är fel
-- bekräftelsemeddelande + levtid när man tryckt på beställ
 - bonus: öppna/stänga varukorg med knapp
 - README med skrämdumpar på sidan som beskriver projektet och visar upp slutresultatet (så att ni har ett portfolio case),
   samt namn på personerna som bidragit till projektet. Tips - kolla readme.so
@@ -60,5 +61,4 @@ x fälten ska valideras och beställning ska inte gå att skicka om något är f
   --- länk till Live-versionen
   --- Lista teknikstack
 
--> Gör klart kortbetalningen
 -> Kolla lektionen från i fredags? när Jenni gick igenom rabattkod

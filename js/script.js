@@ -427,6 +427,7 @@ let adjustedTeacupPrice = 0;
 let adjustedTeacupSum = 0;
 
 const basketAmount = document.querySelector(".basketAmount");
+const basketSymbol = document.querySelector(".material-symbols-outlined");
 
 //Skriver ut varorna till varukorgen
 function printCart() {
@@ -440,6 +441,17 @@ function printCart() {
 
   // Uppdaterar antalet i varukorgen i headern
   basketAmount.innerHTML = `${amountAllTeacups}`;
+
+  // Visuell feedback på att varor läggs i varukorgen (i headern)
+  basketAmount.classList.add("visualFeedback");
+  basketSymbol.classList.add("visuelFeedback");
+
+  setTimeout(headerCartResetStyle, 500);
+
+  function headerCartResetStyle() {
+    basketAmount.classList.remove("visualFeedback");
+    basketSymbol.classList.remove("visualFeedback");
+  }
 
   //Räknar ut summan i varukorgen
   sumCart = Math.round(order.reduce((a, b) => a + b.amount * b.price, 0));
@@ -500,11 +512,9 @@ function emptyCart() {
     teacupsInCart.innerHTML = `<p class="emptyCart">Varukorgen är tom.</p>`;
     shippingAndSum.innerHTML = "";
     basketAmount.innerHTML = "";
-    console.log("detta funkar!");
   }
 }
 function clearMsg() {
-  console.log("HEJ"); // Kom ihåg att ta bort sedan!
   teacupsInCart.innerHTML = `<p class="emptyCart">Varukorgen är tom.</p>`;
 }
 
@@ -569,9 +579,11 @@ const orderBtn = document.querySelector(".orderBtn");
 console.log(orderBtn);
 
 // REGEX betalning
+// ReGex personnummer
 const personalIdRegEx = new RegExp(
   /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
 );
+//RegEx betalkortsnummer
 const creditCardNumberRegEx = new RegExp(
   /^5[1-5][0-9]{14}|^(222[1-9]|22[3-9]\\d|2[3-6]\\d{2}|27[0-1]\\d|2720)[0-9]{12}$/
 ); //Mastercard
@@ -600,9 +612,7 @@ const phoneNumberError = document.querySelector(".phoneNumberError");
 const emailError = document.querySelector(".emailError");
 const discountError = document.querySelector(".discountError");
 
-/**
- * ********** FIRST NAME **********
- */
+/* ------------------------------- FIRST NAME ----------------------------------*/
 // Eventlistener som reagerar på när man byter till ett annat fält
 //firstNameInput.addEventListener("focusout", isFirstNameValid);
 firstNameInput.addEventListener("focusout", validateOrderForm);
@@ -628,9 +638,7 @@ function isFirstNameValid() {
   }
 }
 
-/**
- * ********** LAST NAME **********
- */
+/* ------------------------------- LAST NAME ----------------------------------*/
 // Eventlistener som reagerar på när man byter till ett annat fält
 lastNameInput.addEventListener("focusout", validateOrderForm);
 console.log(lastNameInput.value);
@@ -655,9 +663,7 @@ function isLastNameValid() {
   }
 }
 
-/**
- * ********** ADRESS **********
- */
+/* ------------------------------- ADRESS ----------------------------------*/
 // Eventlistener som reagerar på när man byter till ett annat fält
 adressInput.addEventListener("focusout", validateOrderForm);
 
@@ -679,9 +685,7 @@ function isAdressValid() {
   }
 }
 
-/**
- * ********** ZIP CODE **********
- */
+/* ------------------------------- ZIP CODE ----------------------------------*/
 // Eventlistener som reagerar på när man byter till ett annat fält
 zipCodeInput.addEventListener("focusout", validateOrderForm);
 
@@ -703,9 +707,7 @@ function isZipCodeValid() {
   }
 }
 
-/**
- * ********** CITY **********
- */
+/* ------------------------------- CITY ----------------------------------*/
 // Eventlistener som reagerar på när man byter till ett annat fält
 cityInput.addEventListener("focusout", validateOrderForm);
 
@@ -728,9 +730,7 @@ function isCityValid() {
 }
 // Väljer att inte validera portkod eftersom det finns flera olika format för detta
 
-/**
- * ********** TELEPHONE NUMBER **********
- */
+/* ------------------------------- TELEPHONE NUMBER ----------------------------------*/
 // Eventlistener som reagerar på när man byter till ett annat fält
 phoneNumberInput.addEventListener("focusout", validateOrderForm);
 
@@ -752,33 +752,7 @@ function isPhonNumberValid() {
   }
 }
 
-/**
- * ********** EMAIL **********
- */
-// Eventlistener som reagerar på när man byter till ett annat fält
-emailInput.addEventListener("focusout", validateOrderForm);
-
-function isEmailValid() {
-  if (emailInput.value.length == 0) {
-    return;
-  }
-  const result = emailRegEx.exec(emailInput.value);
-  console.log(result);
-  if (result == null) {
-    console.log("Ogiltig email-adress!");
-    emailInput.classList.add("inputErrorMsg");
-    emailError.textContent = `Ogiltig email-adress.`;
-    return false;
-  } else {
-    emailError.textContent = ``;
-    emailInput.classList.remove("inputErrorMsg");
-    return true;
-  }
-}
-
-/**
- * ********** EMAIL **********
- */
+/* ------------------------------- EMAIL ----------------------------------*/
 // Eventlistener som reagerar på när man byter till ett annat fält
 emailInput.addEventListener("focusout", validateOrderForm);
 
@@ -896,10 +870,9 @@ function activateOrderButton() {
 
   orderBtn.removeAttribute("disabled");
 }
-// Lägg till en timer på felmeddelandet?
 
 /**
- * ORDER CONFIRMATION
+ * *********** ORDER CONFIRMATION ***********
  */
 
 // Skapar en variabel av div där meddelandet ska visas
