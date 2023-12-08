@@ -111,6 +111,10 @@ h3 {
   /*text-transform: uppercase;*/
 }
 
+main {
+  padding: 0 20px 0 20px;
+}
+
 .teacups {
   display: flex;
   flex-direction: column;
@@ -188,7 +192,7 @@ h3 {
 
 form {
   align-content: center;
-  align-items: flex-end;
+  align-items: center;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -198,8 +202,10 @@ form {
     align-items: center;
     color: var(--maroon);
     display: flex;
+    flex-wrap: wrap;
     /*font-family: "Love ya like a sister";*/
     font-size: 1.3rem;
+    justify-content: center;
     margin-bottom: 10px;
     input {
       border-radius: 8px;
@@ -210,7 +216,16 @@ form {
       max-width: 200px;
       padding: 3px 10px;
     }
+    span {
+      color: #ff0000;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
   }
+}
+
+.inputErrorMsg {
+  outline: 3px dashed #ff0000;
 }
 .payment {
   align-items: center;
@@ -259,5 +274,14 @@ form {
   button {
     border-radius: 8px;
     margin: 5px 10px;
+  }
+}
+
+.orderConfirmationMsg {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  h3 {
+    font-size: 2rem;
   }
 }

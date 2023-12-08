@@ -520,31 +520,14 @@ function cartTimer() {
 /**
  *********** FORM & ORDER FUNCTION **********
  */
-// Variabler för att välja inputrutorna i formuläret
-const firstNameInput = document.querySelector("#nameInput");
-const lastnameInput = document.querySelector("#lastnameInput");
-const adressInput = document.querySelector("#adressInput");
-const zipCodeInput = document.querySelector("#zipCodeInput");
-const cityInput = document.querySelector("#cityInput");
-const phoneNumberInput = document.querySelector("#phoneNumberInput");
-const emailInput = document.querySelector("#emailInput");
-const discountInput = document.querySelector("#discountInput");
-
-// Variabler för att kunna skriva ut felmeddelanden i formuläret
-const nameError = document.querySelector(".firstNameError");
-const lastNameError = document.querySelector(".lastNameError");
-const adressError = document.querySelector(".adressNameError");
-const zipCodeError = document.querySelector(".zipCodeError");
-const cityError = document.querySelector(".cityError");
-const phoneNumberError = document.querySelector(".phoneNumberError");
-const emailError = document.querySelector(".emailError");
-const discountError = document.querySelector(".discountError");
 
 // Funktion som kontrollerar om förnamnet är korrekt ifyllt
 
 // REGEX formulär
 // RegEx för namn, efternamn, stad, gatuadress och rabattkod
-const textRegEx = new RegExp(/^[a-zA-ZäöåÄÖÅ]+$i/);
+const textRegEx = new RegExp(/^[A-Za-zåäöÅÄÖ\s]+$/);
+// RegEx för gatuadress; bokstäver + siffror
+const adressRegEx = new RegExp(/^[a-zA-ZåäöÅÄÖ\s.,-]+ \d+$/);
 // RegEx för postnummer
 const zipCodeRegEx = new RegExp(/\d{3}\s?\d{2}/);
 // RegEx för svensk mobilnummer
@@ -594,11 +577,249 @@ const creditCardNumberRegEx = new RegExp(
 ); //Mastercard
 
 /**
- * REGEX-koll för formuläret
+ *********** REGEX FORM **********
  */
 
+// Variabler för att välja inputrutorna i formuläret
+const firstNameInput = document.querySelector("#nameInput");
+const lastNameInput = document.querySelector("#lastnameInput");
+const adressInput = document.querySelector("#adressInput");
+const zipCodeInput = document.querySelector("#zipCodeInput");
+const cityInput = document.querySelector("#cityInput");
+const phoneNumberInput = document.querySelector("#phoneNumberInput");
+const emailInput = document.querySelector("#emailInput");
+const discountInput = document.querySelector("#discountInput");
+
+// Variabler för att kunna skriva ut felmeddelanden i formuläret
+const firstNameError = document.querySelector(".firstNameError");
+const lastNameError = document.querySelector(".lastNameError");
+const adressError = document.querySelector(".adressError");
+const zipCodeError = document.querySelector(".zipCodeError");
+const cityError = document.querySelector(".cityError");
+const phoneNumberError = document.querySelector(".phoneNumberError");
+const emailError = document.querySelector(".emailError");
+const discountError = document.querySelector(".discountError");
+
 /**
- * BETALNING OCH BESTÄLLNING
+ * ********** FIRST NAME **********
+ */
+// Eventlistener som reagerar på när man byter till ett annat fält
+//firstNameInput.addEventListener("focusout", isFirstNameValid);
+firstNameInput.addEventListener("focusout", validateOrderForm);
+console.log(firstNameInput.value);
+
+// Funktion som kollar om förnamnet är rätt ifyllt
+// Om inte, skrivs ett felmeddelande ut och rutan  markeras
+function isFirstNameValid() {
+  if (firstNameInput.value.length == 0) {
+    return;
+  }
+  const result = textRegEx.exec(firstNameInput.value);
+  console.log(result);
+  if (result == null) {
+    console.log("ogiltigt namn!");
+    firstNameInput.classList.add("inputErrorMsg");
+    firstNameError.textContent = `Ett namn kan bara innehålla bokstäver A-Ö.`;
+    return false;
+  } else {
+    firstNameError.textContent = ``;
+    firstNameInput.classList.remove("inputErrorMsg");
+    return true;
+  }
+}
+
+/**
+ * ********** LAST NAME **********
+ */
+// Eventlistener som reagerar på när man byter till ett annat fält
+lastNameInput.addEventListener("focusout", validateOrderForm);
+console.log(lastNameInput.value);
+
+// Funktion som kollar om förnamnet är rätt ifyllt
+// Om inte, skrivs ett felmeddelande ut och rutan  markeras
+function isLastNameValid() {
+  if (lastNameInput.value.length == 0) {
+    return;
+  }
+  const result = textRegEx.exec(lastNameInput.value);
+  console.log(result);
+  if (result == null) {
+    console.log("ogiltigt namn!");
+    lastNameInput.classList.add("inputErrorMsg");
+    lastNameError.textContent = `Ett namn kan bara innehålla bokstäver A-Ö.`;
+    return false;
+  } else {
+    lastNameError.textContent = ``;
+    lastNameInput.classList.remove("inputErrorMsg");
+    return true;
+  }
+}
+
+/**
+ * ********** ADRESS **********
+ */
+// Eventlistener som reagerar på när man byter till ett annat fält
+adressInput.addEventListener("focusout", validateOrderForm);
+
+function isAdressValid() {
+  if (adressInput.value.length == 0) {
+    return;
+  }
+  const result = adressRegEx.exec(adressInput.value);
+  console.log(result);
+  if (result == null) {
+    console.log("Ogiltig adress!");
+    adressInput.classList.add("inputErrorMsg");
+    adressError.textContent = `En adress kräver både bokstäver och siffror.`;
+    return false;
+  } else {
+    adressError.textContent = ``;
+    adressInput.classList.remove("inputErrorMsg");
+    return true;
+  }
+}
+
+/**
+ * ********** ZIP CODE **********
+ */
+// Eventlistener som reagerar på när man byter till ett annat fält
+zipCodeInput.addEventListener("focusout", validateOrderForm);
+
+function isZipCodeValid() {
+  if (zipCodeInput.value.length == 0) {
+    return;
+  }
+  const result = zipCodeRegEx.exec(zipCodeInput.value);
+  console.log(result);
+  if (result == null) {
+    console.log("Ogiltig adress!");
+    zipCodeInput.classList.add("inputErrorMsg");
+    zipCodeError.textContent = `Postkod måste bestå av fem siffror 0-9.`;
+    return false;
+  } else {
+    zipCodeError.textContent = ``;
+    zipCodeInput.classList.remove("inputErrorMsg");
+    return true;
+  }
+}
+
+/**
+ * ********** CITY **********
+ */
+// Eventlistener som reagerar på när man byter till ett annat fält
+cityInput.addEventListener("focusout", validateOrderForm);
+
+function isCityValid() {
+  if (cityInput.value.length == 0) {
+    return;
+  }
+  const result = textRegEx.exec(cityInput.value);
+  console.log(result);
+  if (result == null) {
+    console.log("Ogiltig adress!");
+    cityInput.classList.add("inputErrorMsg");
+    cityError.textContent = `Ortsnamn kan endast bestå av bokstäver A-Ö.`;
+    return false;
+  } else {
+    cityError.textContent = ``;
+    cityInput.classList.remove("inputErrorMsg");
+    return true;
+  }
+}
+// Väljer att inte validera portkod eftersom det finns flera olika format för detta
+
+/**
+ * ********** TELEPHONE NUMBER **********
+ */
+// Eventlistener som reagerar på när man byter till ett annat fält
+phoneNumberInput.addEventListener("focusout", validateOrderForm);
+
+function isPhonNumberValid() {
+  if (phoneNumberInput.value.length == 0) {
+    return;
+  }
+  const result = mobileNrRegEx.exec(phoneNumberInput.value);
+  console.log(result);
+  if (result == null) {
+    console.log("Ogiltig adress!");
+    phoneNumberInput.classList.add("inputErrorMsg");
+    phoneNumberError.textContent = `Telefonnummer måste bestå av 10 siffror.`;
+    return false;
+  } else {
+    phoneNumberError.textContent = ``;
+    phoneNumberInput.classList.remove("inputErrorMsg");
+    return true;
+  }
+}
+
+/**
+ * ********** EMAIL **********
+ */
+// Eventlistener som reagerar på när man byter till ett annat fält
+emailInput.addEventListener("focusout", validateOrderForm);
+
+function isEmailValid() {
+  if (emailInput.value.length == 0) {
+    return;
+  }
+  const result = emailRegEx.exec(emailInput.value);
+  console.log(result);
+  if (result == null) {
+    console.log("Ogiltig email-adress!");
+    emailInput.classList.add("inputErrorMsg");
+    emailError.textContent = `Ogiltig email-adress.`;
+    return false;
+  } else {
+    emailError.textContent = ``;
+    emailInput.classList.remove("inputErrorMsg");
+    return true;
+  }
+}
+
+/**
+ * ********** EMAIL **********
+ */
+// Eventlistener som reagerar på när man byter till ett annat fält
+emailInput.addEventListener("focusout", validateOrderForm);
+
+function isEmailValid() {
+  if (emailInput.value.length == 0) {
+    return;
+  }
+  const result = emailRegEx.exec(emailInput.value);
+  console.log(result);
+  if (result == null) {
+    console.log("Ogiltig email-adress!");
+    emailInput.classList.add("inputErrorMsg");
+    emailError.textContent = `Ogiltig email-adress.`;
+    return false;
+  } else {
+    emailError.textContent = ``;
+    emailInput.classList.remove("inputErrorMsg");
+    return true;
+  }
+}
+
+/**
+ *********** ALL INPUTS VALID? **********
+ */
+// Funktion som kollar om samtliga fält är korrekt ifyllda
+function validateOrderForm() {
+  if (
+    isFirstNameValid() &&
+    isLastNameValid() &&
+    isAdressValid() &&
+    isZipCodeValid() &&
+    isCityValid() &&
+    isPhonNumberValid() &&
+    isEmailValid()
+  ) {
+    activateOrderButton();
+  }
+}
+
+/**
+ *********** ORDER & PAYMENT **********
  */
 
 //Lägger på en eventlistener som registrerar vilket av valen som är aktivt och startar
@@ -676,3 +897,28 @@ function activateOrderButton() {
   orderBtn.removeAttribute("disabled");
 }
 // Lägg till en timer på felmeddelandet?
+
+/**
+ * ORDER CONFIRMATION
+ */
+
+// Skapar en variabel av div där meddelandet ska visas
+const orderConfirmationMsg = document.querySelector(".orderConfirmationMsg");
+console.log(orderConfirmationMsg);
+
+// Lägger till en eventlyssnare, på beställknappen, som kör funktionen printOrderConfirmationMsg
+orderBtn.addEventListener("click", printOrderConfirmation);
+
+//Funktion som visar meddelandet
+function printOrderConfirmation() {
+  orderConfirmationMsg.innerHTML += ``;
+  orderConfirmationMsg.classList.remove("hidden");
+  orderConfirmationMsg.innerHTML += `
+<h3>Tack för din order!</h3>
+<p class="confirmationMsg">På grund av den stundande julen
+ kan leveransen ta lite längre tid än vanligt. Förvänta dig att få dina nya favoritkoppar inom 3-5 arbetsdagar.
+ Tack för att du valde att handla hos oss och varmt välkommen åter!</p>
+`;
+  // Återställer orderknappen till disabled så att det inte går att klicka på den utan att göra en ny beställning
+  orderBtn.setAttribute("disabled", "");
+}
