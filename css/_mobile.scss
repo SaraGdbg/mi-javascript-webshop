@@ -103,27 +103,26 @@ header {
 
 h2 {
   color: var(--darkPetrol);
-  font-size: 2.3rem;
+  font-size: 2rem;
 }
 
 h3 {
   color: var(--darkPetrol);
   font-family: "Love ya like a sister";
-  font-size: 2.7rem;
+  font-size: 2rem;
   letter-spacing: 3px;
-  margin: 40px 0 5px 0;
-}
-
-main {
-  padding: 0 20px 0 20px;
+  margin: 30px 0 0 0;
 }
 
 .teacups {
   display: flex;
   flex-direction: column;
   align-items: center;
+  .category {
+    font-size: 1rem;
+  }
   .rating {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .img-containers {
     border: 10px solid #fff;
@@ -141,13 +140,26 @@ main {
     margin: 0 0 10px 0;
   }
   .buttons button {
+    background-color: transparent;
+    border: 2px solid #1a1a1a;
+    border-radius: 15px;
+    cursor: pointer;
     font-size: 1.5rem;
     justify-content: center;
+    min-height: 20px;
+    min-width: 40px;
+    text-align: center;
+  }
+  .buttons button:hover {
+    color: #000;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
   }
 }
 
 .sort {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,7 +169,8 @@ main {
   .sortBtns button {
     background-color: var(--turqouise);
     border: none;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
 }
 
@@ -174,21 +187,43 @@ main {
 
 /* -------------------------------------------------- CART ------------------------------------------------- */
 .teacupsInCart {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0 15px;
 }
 .currentOrder {
   align-items: baseline;
   display: flex;
   font-size: 1.3rem;
-  justify-content: space-around;
+
   .cartProductName,
   .cartProductAmount,
   .cartProductPrice {
+    display: flex;
     margin: 8px 0 8px 0;
   }
   .cartProductName {
     font-size: 1.3rem;
     text-transform: uppercase;
+    width: 160px;
+  }
+  .cartProductAmount,
+  .cartProductPrice {
+    width: 80px;
+  }
+}
+.shippingAndSum {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  .shipping {
+    font-size: 1.2rem;
+  }
+  .cartSum {
+    font-size: 1.5rem;
   }
 }
 
@@ -200,7 +235,7 @@ form {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: 0 20px 0 0;
+  padding: 0 20px;
   width: 100vw;
   label {
     align-items: center;
@@ -209,15 +244,16 @@ form {
     flex-wrap: wrap;
     /*font-family: "Love ya like a sister";*/
     font-size: 1.3rem;
-    justify-content: center;
+    justify-content: flex-end;
     margin-bottom: 10px;
+    width: 350px;
     input {
       border-radius: 8px;
       display: flex;
       /*font-family: "Inter";*/
       font-size: 1.1rem;
       margin-left: 10px;
-      max-width: 200px;
+      max-width: 180px;
       padding: 3px 10px;
     }
     span {
@@ -235,13 +271,33 @@ form {
   align-items: center;
   display: flex;
   flex-direction: column;
+  font-size: 1.3rem;
+  margin-top: 15px;
   .paymentChoice {
     display: flex;
   }
+  .invoice {
+    margin: 5px;
+  }
+  .invoice label,
+  .card label {
+    color: var(--maroon);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    input {
+      border-radius: 8px;
+      font-size: 1.1rem;
+      margin-left: 10px;
+      max-width: 180px;
+      padding: 3px 10px;
+    }
+  }
 }
-.paymentInvoice,
-.paymentCard {
+.paymentInvoice {
   margin: 10px;
+}
+.paymentCard {
+  margin: 10px 10px 10px 20px;
 }
 
 .card {
@@ -250,12 +306,11 @@ form {
   flex-direction: column;
   margin: 5px;
   .small {
-    margin: 5px;
-    width: 40px;
+    width: 55px;
   }
   .cvc {
     margin: 5px;
-    width: 40px;
+    width: 55px;
   }
 }
 
@@ -268,19 +323,45 @@ form {
   display: flex;
   flex-direction: column;
   .checkboxLabel {
+    align-items: center;
     display: flex;
     font-size: 1rem;
   }
   .personalInformation,
   .newsletterConfirmation {
-    margin: 5px;
+    margin: 8px;
   }
 }
+
 .formBtns {
   display: flex;
+  justify-content: center;
+  margin: 20px 0;
   button {
     border-radius: 8px;
     margin: 5px 10px;
+
+    border: 2px solid #1a1a1a;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    justify-content: center;
+    min-height: 20px;
+    min-width: 40px;
+    padding: 5px 10px;
+    text-align: center;
+  }
+  .orderBtn.disabled {
+    background-color: transparent;
+  }
+  .orderBtn:not(:disabled) {
+    background-color: #1e5f39;
+    color: #fff;
+  }
+
+  .resetBtn {
+    background-color: var(--rust);
+    color: #fff;
   }
 }
 

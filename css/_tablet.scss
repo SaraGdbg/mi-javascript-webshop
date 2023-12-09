@@ -1,7 +1,19 @@
 body {
-  background-color: var(--turqouise);
+  background-color: orange;
 
-  #teacup-container {
+  .description {
+    .descriptionText {
+      font-size: 1.5rem;
+      height: 80%;
+      left: 5%;
+      padding: 25px;
+      position: absolute;
+      top: 10%;
+      width: 45%;
+    }
+  }
+
+  .teacupContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

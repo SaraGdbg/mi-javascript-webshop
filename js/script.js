@@ -218,7 +218,7 @@ const teacups = [
  ********** PLUS/MINUS BTNS **********
  */
 //Väljer rätt ställe att skriva ut varorna i
-const teacupContainer = document.querySelector("#teacup-container");
+const teacupContainer = document.querySelector("#teacupContainer");
 
 // Skriver ut varorna
 printProducts();
@@ -257,7 +257,7 @@ function printProducts() {
       <span class="rating">Betyg: ${teacups[i].rating}/5</span>
       <span class="category">${teacups[i].category}</span>
       <div id="img-conatiner-${i}" class="img-containers">
-        <img src="${teacups[i].img.src}" alt="${teacups[i].img.alt}" id="teacup-img-${i} width="2048" height="2048" loading = "lazy"/>
+        <img src="${teacups[i].img.src}" alt="${teacups[i].img.alt}" id="teacup-img-${i} width="1000" height="1000" loading = "lazy"/>
       </div>
       <span class="price">Pris: ${teacups[i].price} kr</span>
       <div class="buttons">
@@ -492,12 +492,12 @@ function printCart() {
      <div class="currentOrder">
         <p class="cartProductName">${order[i].name}<p>
         <p class="cartProductAmount">${order[i].amount}st</p>
-        <p class="cartProductPrice">Pris: ${adjustedTeacupSum}kr</p>
+        <p class="cartProductPrice">${adjustedTeacupSum}kr</p>
       </div>`;
   }
   shippingAndSum.innerHTML = `
       <p class="shipping">Fraktkostnad: 25kr + 10% av summan</p>
-      <p class="cartSum">Totalkostnad: ${sumCart} kr</p>
+      <p class="cartSum">Summa: ${sumCart} kr</p>
     `;
 }
 
@@ -627,7 +627,7 @@ function isFirstNameValid() {
   const result = textRegEx.exec(firstNameInput.value);
   console.log(result);
   if (result == null) {
-    console.log("ogiltigt namn!");
+    console.log("Ogiltigt namn!");
     firstNameInput.classList.add("inputErrorMsg");
     firstNameError.textContent = `Ett namn kan bara innehålla bokstäver A-Ö.`;
     return false;
@@ -652,7 +652,7 @@ function isLastNameValid() {
   const result = textRegEx.exec(lastNameInput.value);
   console.log(result);
   if (result == null) {
-    console.log("ogiltigt namn!");
+    console.log("Ogiltigt efternamn!");
     lastNameInput.classList.add("inputErrorMsg");
     lastNameError.textContent = `Ett namn kan bara innehålla bokstäver A-Ö.`;
     return false;
@@ -696,7 +696,7 @@ function isZipCodeValid() {
   const result = zipCodeRegEx.exec(zipCodeInput.value);
   console.log(result);
   if (result == null) {
-    console.log("Ogiltig adress!");
+    console.log("Ogiltig postkod!");
     zipCodeInput.classList.add("inputErrorMsg");
     zipCodeError.textContent = `Postkod måste bestå av fem siffror 0-9.`;
     return false;
@@ -718,7 +718,7 @@ function isCityValid() {
   const result = textRegEx.exec(cityInput.value);
   console.log(result);
   if (result == null) {
-    console.log("Ogiltig adress!");
+    console.log("Ogiltig ort!");
     cityInput.classList.add("inputErrorMsg");
     cityError.textContent = `Ortsnamn kan endast bestå av bokstäver A-Ö.`;
     return false;
@@ -741,7 +741,7 @@ function isPhonNumberValid() {
   const result = mobileNrRegEx.exec(phoneNumberInput.value);
   console.log(result);
   if (result == null) {
-    console.log("Ogiltig adress!");
+    console.log("Ogiltigt telefonnummer!");
     phoneNumberInput.classList.add("inputErrorMsg");
     phoneNumberError.textContent = `Telefonnummer måste bestå av 10 siffror.`;
     return false;
