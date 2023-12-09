@@ -36,10 +36,11 @@ h3 {
 header {
   align-items: center;
   background-color: var(--turqouise);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  height: 15vh;
+  flex-wrap: nowrap;
+  height: 200px;
   justify-content: center;
   margin: 0 auto;
   padding: 15px 10px;
@@ -51,8 +52,8 @@ header {
   }
 
   h1 {
-    font-family: "Love ya like a sister"; //Byta font? Övertyga Tea?
-    font-size: 3.5rem;
+    font-family: "Love ya like a sister";
+    font-size: 3.2rem;
     margin: 15px 25px 5px 25px;
   }
 
@@ -107,7 +108,7 @@ h2 {
 
 h3 {
   color: var(--darkPetrol);
-  font-family: "Love ya like a sister"; //Byta font? Övertyga Tea?
+  font-family: "Love ya like a sister";
   font-size: 2.7rem;
   letter-spacing: 3px;
   margin: 40px 0 5px 0;
@@ -145,7 +146,7 @@ main {
   }
 }
 
-#sort {
+.sort {
   font-size: 1.4rem;
   display: flex;
   flex-direction: column;
@@ -156,6 +157,7 @@ main {
   .sortBtns button {
     background-color: var(--turqouise);
     border: none;
+    font-size: 1.3rem;
   }
 }
 
