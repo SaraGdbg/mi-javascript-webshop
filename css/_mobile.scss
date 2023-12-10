@@ -16,7 +16,8 @@ img {
   height: auto;
 }
 
-body {
+body,
+footer {
   background-color: var(--turqouise);
   color: #000;
   font-family: "Inter";
@@ -86,12 +87,22 @@ header {
   color: #000;
   position: relative;
   text-align: center;
-  .background-img {
+
+  .backgroundImg {
+    display: block;
     width: 100%;
   }
+  .contentImg1,
+  .contentImg2,
+  .contentImg3 {
+    display: none;
+  }
+
   .descriptionText {
+    align-items: center;
     background-color: rgb(252, 244, 217, 0.8);
     border-radius: 10px;
+    display: flex;
     font-size: 1rem;
     height: 92%;
     margin: 8px;
@@ -306,11 +317,11 @@ form {
   flex-direction: column;
   margin: 5px;
   .small {
-    width: 55px;
+    width: 70px;
   }
   .cvc {
     margin: 5px;
-    width: 55px;
+    width: 70px;
   }
 }
 
@@ -365,11 +376,34 @@ form {
   }
 }
 
-.orderConfirmationMsg {
-  align-items: center;
+.confirmationMsgContainer {
+  display: flex;
+  justify-content: center;
+  .orderConfirmationMsg {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    h3 {
+      font-size: 2rem;
+    }
+  }
+}
+
+footer {
   display: flex;
   flex-direction: column;
-  h3 {
-    font-size: 2rem;
+  .contact {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    p {
+      margin: 0 0 5px 0;
+    }
+    .adress,
+    .city {
+      font-family: "Love ya like a sister";
+      font-size: 1.6rem;
+    }
   }
 }

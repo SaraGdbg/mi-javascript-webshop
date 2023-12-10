@@ -1,15 +1,29 @@
 body {
-  background-color: orange;
+  background-color: var(--turqouise);
 
   .description {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    .backgroundImg {
+      grid-column: 1 / span 1;
+    }
+
+    .contentImg2 {
+      display: block;
+      grid-column: 3 / span 1;
+    }
+
     .descriptionText {
-      font-size: 1.5rem;
-      height: 80%;
-      left: 5%;
+      align-items: center;
+      display: flex;
+      font-size: 1.2rem;
+      grid-column: 2 / span 1;
+      height: 100%;
+      margin: 0;
       padding: 25px;
       position: absolute;
-      top: 10%;
-      width: 45%;
+      width: 100%;
     }
   }
 
