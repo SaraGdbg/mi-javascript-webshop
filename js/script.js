@@ -88,7 +88,7 @@ const teacups = [
     rating: 3,
     amount: 0,
     img: {
-      src: "assets/imgs/7MORMORpexels-gülşah-aydoğan-19040177.jpg",
+      src: "assets/imgs/7MORMORpexels-gulsah-aydogan-19040177.jpg",
       alt: "En gammaldags vit kopp med guldkant på ett fat med guldkant. Koppen är fylld med ett rött te.",
       width: 500,
       height: 500,
