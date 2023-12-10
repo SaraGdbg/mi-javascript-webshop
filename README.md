@@ -15,12 +15,12 @@ The project is built using the following:
 
 ![Miro](https://img.shields.io/badge/-Miro-FFFF00?logo=miro&logoColor=050038&style=for-the-badge)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-![Mobile view - first page](screenshots/mobile1.PNG)
-![Mobile view - products](screenshots/mobile2.PNG)
-![Mobile view - order form](screenshots/mobile3.PNG)
-![Mobile view - order confirmation](screenshots/mobile4.PNG)
-![Desktop view 1](screenshots/chrome1.PNG)
-![Desktop view 2](screenshots/chrome2.PNG)
+![Mobile view - first page](https://github.com/Medieinstitutet/fed23d-js-grundkurs-webshop-SaraGdbg/blob/main/screenshots/mobile1.PNG)
+![Mobile view - products](https://github.com/Medieinstitutet/fed23d-js-grundkurs-webshop-SaraGdbg/blob/main/screenshots/mobile2.PNG)
+![Mobile view - order form](https://github.com/Medieinstitutet/fed23d-js-grundkurs-webshop-SaraGdbg/blob/main/screenshots/mobile3.PNG)
+![Mobile view - order confirmation](https://github.com/Medieinstitutet/fed23d-js-grundkurs-webshop-SaraGdbg/blob/main/screenshots/mobile4.PNG)
+![Desktop view 1](https://github.com/Medieinstitutet/fed23d-js-grundkurs-webshop-SaraGdbg/blob/main/screenshots/chrome1.PNG)
+![Desktop view 2](https://github.com/Medieinstitutet/fed23d-js-grundkurs-webshop-SaraGdbg/blob/main/screenshots/chrome2.PNG)
 
 ## Assignments Details
 
