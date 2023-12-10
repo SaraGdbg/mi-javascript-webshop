@@ -10,6 +10,13 @@
   box-sizing: border-box;
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--darkPetrol);
+    color: var(--vanilla);
+  }
+}
+
 img {
   display: block;
   width: 100%;
@@ -78,7 +85,7 @@ header {
   .visualFeedback {
     color: #fff;
     font-size: 1.8rem;
-    transition: font-size cubic-bezier(0.4, 0, 0.2, 1) ease-in-out;
+    transition: font-size 0.3s cubic-bezier(0.4, 0, 0.2, 1) ease-in-out;
   }
 }
 /* -------------------------------------------------- PAGE 1 ------------------------------------------------- */
@@ -310,14 +317,16 @@ form {
 .paymentCard {
   margin: 10px 10px 10px 20px;
 }
-
 .card {
   align-items: flex-end;
   display: flex;
   flex-direction: column;
   margin: 5px;
-  .small {
-    width: 70px;
+  .dateInfo {
+    display: flex;
+    .small {
+      width: 70px;
+    }
   }
   .cvc {
     margin: 5px;

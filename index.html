@@ -24,9 +24,12 @@
         <span class="slogan">- där varje kopp rymmer en stund av glädje!</span>
       </div>
       <div class="basket">
-        <span class="material-symbols-outlined" aria-label="Shopping cart icon.">shopping_cart</span>
+        <span class="material-symbols-outlined" aria-label="Shopping cart icon."
+          >shopping_cart</span
+        >
         <div class="amount">
-          <span class="basketAmount">0</span></div>
+          <span class="basketAmount">0</span>
+        </div>
       </div>
     </header>
     <main>
@@ -37,7 +40,7 @@
           - vi har något för alla smaker och ögonblick. <br />Bläddra i vårt
           sortiment och hitta din favorit!
         </p>
-       
+
         <img
           src="./assets/imgs/pexels-leah-kelley-851553.jpg"
           alt="Bild på en kaffekopp tagen rakt uppifrån. I kaffekoppen syns kaffe med ett hjärta av skummad mjölk."
@@ -46,26 +49,23 @@
           height="1365"
           width="2048"
         />
-         
-          <img 
-            src="assets/imgs/pexels-erika-corona-10896046.jpg" 
-            alt="Bild på en espressokopp på fat. I kaffekoppen syns kaffe och ett hjärta av skummad mjölk."
-            class="contentImg1"
-            loading="lazy"
-            height="1536"
-            width="2048"
-          />
-          <img 
-            src="assets/imgs/pexels-samson-katt-5255236.jpg" 
-            alt="Bild tagen från sidan, på en rykande kaffekopp som står på en trave pocketböcker."
-            class="contentImg2"
-            loading="lazy"
-            height="1365"
-            width="2047"
-          />
-         
 
-        
+        <img
+          src="assets/imgs/pexels-erika-corona-10896046.jpg"
+          alt="Bild på en espressokopp på fat. I kaffekoppen syns kaffe och ett hjärta av skummad mjölk."
+          class="contentImg1"
+          loading="lazy"
+          height="1536"
+          width="2048"
+        />
+        <img
+          src="assets/imgs/pexels-samson-katt-5255236.jpg"
+          alt="Bild tagen från sidan, på en rykande kaffekopp som står på en trave pocketböcker."
+          class="contentImg2"
+          loading="lazy"
+          height="1365"
+          width="2047"
+        />
       </section>
 
       <!--------------------------------------- PRODUCTS ------------------------------------------------>
@@ -73,7 +73,9 @@
       <div class="teacups">
         <h2>Sortiment</h2>
         <div id="sort" class="sort"><!-- Sorteringsknappar här --></div>
-        <div id="teacupContainer" class="teacupContainer"><!--Tekopparna här--></div>
+        <div id="teacupContainer" class="teacupContainer">
+          <!--Tekopparna här-->
+        </div>
       </div>
 
       <!----------------------------------------- TEST --------------------------------------------------->
@@ -83,7 +85,7 @@
       <div id="shoppingCart">
         <h2>Varukorg</h2>
 
-        <div class="teacupsInCart" class="emptyCart">Varukorgen är tom.</div>
+        <div class="teacupsInCart emptyCart">Varukorgen är tom.</div>
         <div class="discounts"></div>
         <div class="shippingAndSum"></div>
 
@@ -96,27 +98,52 @@
       <form>
         <label>
           Förnamn:
-          <input type="text" id="nameInput" required="required" placeholder="Ditt namn" />
+          <input
+            type="text"
+            id="nameInput"
+            required="required"
+            placeholder="Ditt namn"
+          />
           <span class="firstNameError"></span>
         </label>
         <label>
           Efternamn:
-          <input type="text"  id="lastnameInput" required="required" placeholder="Efternamn" />
+          <input
+            type="text"
+            id="lastnameInput"
+            required="required"
+            placeholder="Efternamn"
+          />
           <span class="lastNameError"></span>
         </label>
         <label>
           Adress:
-          <input type="text" id="adressInput" required="required" placeholder="Adress" />
+          <input
+            type="text"
+            id="adressInput"
+            required="required"
+            placeholder="Adress"
+          />
           <span class="adressError"></span>
         </label>
         <label>
           Postnummer:
-          <input type="text"  id="zipCodeInput" required="required" placeholder="NNN NN" />
+          <input
+            type="text"
+            id="zipCodeInput"
+            required="required"
+            placeholder="NNN NN"
+          />
           <span class="zipCodeError"></span>
         </label>
         <label>
           Postort:
-          <input type="text" id="cityInput" required="required" placeholder="ORT" />
+          <input
+            type="text"
+            id="cityInput"
+            required="required"
+            placeholder="ORT"
+          />
           <span class="cityError"></span>
         </label>
         <label>
@@ -125,26 +152,41 @@
         </label>
         <label>
           Telefonnummer:
-          <input type="text" id="phoneNumberInput" required="required" placeholder="Telefonnummer" />
+          <input
+            type="text"
+            id="phoneNumberInput"
+            required="required"
+            placeholder="Telefonnummer"
+          />
           <span class="phoneNumberError"></span>
         </label>
         <label>
           E-postadress:
-          <input type="text" id="emailInput" required="required" placeholder="E-postadress" />
+          <input
+            type="text"
+            id="emailInput"
+            required="required"
+            placeholder="E-postadress"
+          />
           <span class="emailError"></span>
         </label>
         <label>
           Rabattkod:
-          <input type="text" id="discountInput" required="required" placeholder="Rabattkod" />
+          <input
+            type="text"
+            id="discountInput"
+            required="required"
+            placeholder="Rabattkod"
+          />
           <span class="discountError"></span>
         </label>
-        </form>
+      </form>
 
-<!-------------------------------------- PAYMENT OPTIONS ---------------------------------------------->
-        
-        <div class="payment">
-          <div class="paymentChoice">
-            <label class="checkboxLabel checkboxLabelInvoice">
+      <!-------------------------------------- PAYMENT OPTIONS ---------------------------------------------->
+
+      <div class="payment">
+        <div class="paymentChoice">
+          <label class="checkboxLabel checkboxLabelInvoice">
             <input
               type="radio"
               name="paymentOption"
@@ -152,65 +194,85 @@
               value="invoice"
               checked
             /><span>Faktura</span>
-            </label>
-            <label class="checkboxLabel">
+          </label>
+          <label class="checkboxLabel">
             <input
               type="radio"
               name="paymentOption"
               class="paymentCard"
               value="card"
             /><span>Kortbetalning</span>
-            </label>
-          </div>
-          <div class="invoice" id="invoice">
-            <label>
+          </label>
+        </div>
+        <div class="invoice" id="invoice">
+          <label>
             <span>Personnummer:</span>
-            <input type="text" id="idNr" placeholder="YY-MM-DD-XXXX">
-            </label>
-          </div>
-          <div class="card hidden" id="card">
-            <label>
-              <span>Kortnummer:</span>
-              <input type="number" id="creditCardNumber">
-            </label>
+            <input type="text" id="idNr" placeholder="YY-MM-DD-XXXX" />
+          </label>
+        </div>
+        <div class="card hidden" id="card">
+          <label>
+            <span>Kortnummer:</span>
+            <input type="number" id="creditCardNumber" />
+          </label>
+          <div class="dateInfo">
             <label>
               <span>Datum</span>
-              <span>
-                <input type="number" class="small" placeholder="YY" id="creditCardYear"> /<input type="number" class="small" 
-                placeholder="MM" id="creditCardMonth">
-              </span>
+              <input
+                type="number"
+                class="small"
+                placeholder="YY"
+                id="creditCardYear"
+              />
+              /
             </label>
             <label>
-              <span>CVC</span>
-              <input type="number" class="cvc" placeholder="123" id="creditCardCvc">
+              <input
+                type="number"
+                class="small"
+                placeholder="MM"
+                id="creditCardMonth"
+              />
             </label>
           </div>
-        </div>
-        <div class="errorMsg"><!--Felmeddelanden här!--></div>
-
-<!-------------------------------------- CHECKBOXES ---------------------------------------------->
-
-        <div class="checkboxesInformation">
-          <label class="checkboxLabel">
+          <label>
+            <span>CVC</span>
             <input
-              type="checkbox"
-              required="required"
-              class="personalInformation"
-            />Jag godkänner hantering av personupppgifter
-          </label>
-          <label class="checkboxLabel">
-            <input type="checkbox" class="newsletterConfirmation" checked />Ja,
-            tack! Jag vill gärna få ert nyhetsbrev
+              type="number"
+              class="cvc"
+              placeholder="123"
+              id="creditCardCvc"
+            />
           </label>
         </div>
-        <div class="formBtns">
-          <button type="submit" class="orderBtn" disabled>Beställ</button>
-          <button type="reset" class="resetBtn">Avbryt order</button>
+      </div>
+      <div class="errorMsg"><!--Felmeddelanden här!--></div>
+
+      <!-------------------------------------- CHECKBOXES ---------------------------------------------->
+
+      <div class="checkboxesInformation">
+        <label class="checkboxLabel">
+          <input
+            type="checkbox"
+            required="required"
+            class="personalInformation"
+          />Jag godkänner hantering av personupppgifter
+        </label>
+        <label class="checkboxLabel">
+          <input type="checkbox" class="newsletterConfirmation" checked />Ja,
+          tack! Jag vill gärna få ert nyhetsbrev
+        </label>
+      </div>
+      <div class="formBtns">
+        <button type="submit" class="orderBtn" disabled>Beställ</button>
+        <button type="reset" class="resetBtn">Avbryt order</button>
+      </div>
+
+      <div class="confirmationMsgContainer">
+        <div class="orderConfirmationMsg hidden">
+          <!-- Orderbekräftelse här -->
         </div>
-      </form>
-<div class="confirmationMsgContainer">
-      <div class="orderConfirmationMsg hidden"><!-- Orderbekräftelse här --></div>
-</div>
+      </div>
     </main>
     <footer>
       <div class="contact">
