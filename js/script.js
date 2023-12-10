@@ -473,12 +473,19 @@ function printCart() {
   }
 
   //Helgpåslag på pris - stämmer nu
-  // Se Jennis tipsvideo, länk KW
   if ((isFriday && currentHour >= 15) || (isMonday && currentHour <= 3)) {
     priceIncrease = 1.15;
   }
 
-  // Skriver ut i varukorgen varukorgen
+  if (sumCart > 800) {
+    invoiceOption.classList.add("hidden");
+    checkboxLabelInvoice.classList.add("hidden");
+  } else {
+    invoiceOption.classList.remove("hidden");
+    checkboxLabelInvoice.classList.remove("hidden");
+  }
+
+  // Skriver ut i varukorgen
   for (let i = 0; i < order.length; i++) {
     teacupPrice = order[i].price;
     if (order[i].amount >= 10) {
@@ -549,6 +556,9 @@ const emailRegEx = new RegExp(/^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,6}$/);
 const cardInvoiceRadios = Array.from(
   document.querySelectorAll('input[name="paymentOption"]')
 );
+
+// Väljer ut radioknappen och texten faktura, för att kunna ta bort dem vid summa > 800
+const checkboxLabelInvoice = document.querySelector(".checkboxLabelInvoice");
 
 // Variabler som används för att aktivera beställningsknappen när betalfälten är korrekt ifyllda
 const inputs = [
